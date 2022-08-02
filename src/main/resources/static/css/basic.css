@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+h1 {
+	text-align:center;
+}
+
+p {
+	text-align:center;
+	color:red;
+}
+
+#divfillin {
+	display:block;
+	text-align:center;
+}
+
+#divimport {
+	display:none;
+	text-align:center;
+}

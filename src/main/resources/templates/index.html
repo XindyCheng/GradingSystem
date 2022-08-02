@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>信息录入</title>
+<link rel="stylesheet" type="text/css" href="../static/css/basic.css">
+</head>
+
+<body class="body">
+<script>
+function validateForm() {
+//     var x = document.forms["pmentry"]["pmname"].value;
+    var total = document.getElementById("total").value;
+    if (isNaN(total)){
+    	alert("总金额格式不正确");
+//     	document.getElementById("totalwaring").innerHTML = "总金额格式不正确";
+        return false;
+    }
+//     if (x == null || x == "") {
+//         alert(x);
+//         return false;
+//     }
+}
+
+function toImport(){
+	var div1 = document.getElementById("divfillin");
+	var div2 = document.getElementById("divimport");
+	if(div1.style.display == "none"){
+		div1.style.display = "block";
+		div2.style.display = "none";
+	}
+	else{
+		div2.style.display = "block";
+		div1.style.display = "none";
+	}
+}
+</script>
+<noscript>抱歉，您的浏览器不支持本页面，请更换浏览器进行填写</noscript>
+
+<h1>信息录入</h1>
+<p>此表单仅管理员与填写人可浏览</p>
+
+<hr>
+<form action="" style="text-align:center;">
+	填写人名称：<input type="text" id="pmname" name="pmname" required="required" placeholder="请输入用户名……" /> 
+	<br/>
+	填写方式：<input type="radio" id="fillin" name="pattern" onclick="toImport()" value="网页填写" checked="checked"/>网页填写 
+	<input type="radio" id="import" name="pattern" onclick="toImport()" value="导入" />文件导入
+	<br/>
+<hr>
+</form>
+
+<div id="divfillin">
+	<form name="pmentry" onsubmit="return validateForm()" action="@{/addEntry}">
+			 合同编号：<input type="text" id="contractnumber" name="contractnumber" required="required" placeholder="请输入合同编号……" /> 
+			<br/>
+			供应商名称：<input type="text" id="supplier" name="supplier" required="required" placeholder="请输入供应商名称……" /> 
+			<br/>
+			客户名称：<input type="text" id="client" name="client" required="required" placeholder="请输入客户名称……" /> 
+			<br/>
+			开始年份：<select name="start">
+			<option value="y2017">2017</option>
+			<option value="y2018">2018</option>
+			<option value="y2019" selected>2019</option>
+			<option value="y2020">2020</option>
+			<option value="y2021">2021</option>
+			<option value="y2022">2022</option>
+			<option value="y2023">2023</option>
+			<option value="y2024">2024</option>
+			</select>
+			<br/>
+			总金额：<input type="text" id="total" name="total" required="required" placeholder="请输入总金额……" /> 
+			<br/>
+			项目状态：<input type="radio" id="underway" name="state" value="在途" />在途 
+			<input type="radio" id="complete" name="state" value="结束" />结束
+			<br/>
+			涉及能力：<input type="checkbox" id="ab1" name="ab1" value="5G" />5G
+			<input type="checkbox" id="ab2" name="ab2" value="云" />云
+			<input type="checkbox" id="ab3" name="ab3" value="网" />网
+			<input type="checkbox" id="ab4" name="ab4" value="物" />物
+			<input type="checkbox" id="ab5" name="ab5" value="安" />安
+			<input type="checkbox" id="ab6" name="ab6" value="硬件" />硬件
+			<input type="checkbox" id="ab7" name="ab7" value="垫资" />垫资
+			<input type="checkbox" id="ab8" name="ab8" value="工程" />工程
+			<input type="checkbox" id="ab9" name="ab9" value="其他" />其他
+<!-- 			<input type="text" id="text" name="text" placeholder="请输入其它能力……" />  -->
+			<br/> 
+			行业BG：<select name="bg">
+			<option value="bg1">数字政府</option>
+			<option value="bg2">大企业</option>
+			<option value="bg3">智慧城市</option>
+			<option value="bg4">金融</option>
+			<option value="bg5">互联网</option>
+			<option value="bg6">教育</option>
+			<option value="bg7">卫健</option>
+			</select>
+			<br/>
+			方案经理评分：<select name="score">
+			<option value="score1">A</option>
+			<option value="score2">B</option>
+			<option value="score3">C</option>
+			<option value="score4">D</option>
+			</select>
+			<br/>
+			客户经理名称：<input type="text" id="cmname" name="cmname" required="required" placeholder="请输入客户经理名称……" /> 
+			<br/>
+			交付经理名称：<input type="text" id="dmname" name="dmname" required="required" placeholder="请输入交付经理名称……" /> 
+			<br/>
+			备注：<textarea id="comment" name="comment" cols="20" rows="1" /></textarea>
+			<br/> 
+<hr>
+			<input type="submit" value="提交" /> 
+			<input type="reset" value="重置" />
+	</form>
+</div>
+
+<div id="divimport">
+			上传导入文档附件：<input type="file" id="file" name="file" /> 
+			<br/>
+			<a href="../static/import_template.xlsx" target="_blank" rel="noopener noreferrer">点击此处下载导入文档模板</a> 
+			<br/> 
+<hr>
+			<input type="submit" value="提交" /> 
+			<input type="reset" value="重置" />
+</div>
+
+</body>
+</html>
