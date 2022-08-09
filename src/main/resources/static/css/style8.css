@@ -1396,7 +1396,7 @@ select.form-control option[value=""][disabled] {
 .n-select-option {
   margin-top: 20px;
   position: relative;
-  left: -15px;
+  left: -0px;
 }
 .n-select-option select {
   width: 103%;

@@ -11,6 +11,7 @@ public class CMGrading {
 	@Id
 	private Integer id;
 	private String cmname;
+	private String unit;
 	private Integer credibility;
 	private Integer customerrelat;
 	private Integer projectsupport;

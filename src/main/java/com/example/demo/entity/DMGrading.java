@@ -11,6 +11,7 @@ public class DMGrading {
 	@Id
 	private Integer id;
 	private String dmname;
+	private String unit;
 	private Integer constructability;
 	private Integer technique;
 	private Integer res_tl;
