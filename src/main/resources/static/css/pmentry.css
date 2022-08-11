@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.wrapper{
+	background-color: #f1f9fe;
+}
+
+.title{
+	font-family: 微软雅黑;
+	font-size: 26px;
+	font-weight: bold;
+	border-bottom:1px dashed #CCCCCC;
+	color: #5756a2;
+}
+.form_table,.form_table tr th, .form_table tr td { 
+	border-color: #8080c0; 
+}
+
+.form_table tr{
+	height:50px;
+}
+
+.form_table th{
+	width:200px;
+	align:"center";
+	color: #5756a2;
+	font-weight: 500;
+}
+
+.form_table td{
+	color: #5756a2;
+}
+.form_table input{
+	background-color: #ddeef9;
+	border-style: none;
+	outline-color:#8080c0;
+}
+.form_table select{
+	background-color: #ddeef9;
+	border-style:none;
+	outline-color:#8080c0;
+	text-align: center;
+}
+.form_table textarea{
+	background-color: #ddeef9;
+	border-style:none;
+	outline-color:#8080c0;
+}
+
+.my_select-option select{
+	height: 50px;
+}
+
+.radio_set input{
+/* 	background-color: #ddeef9; */
+	border-style:none;
+	outline-color:#8080c0;
+}

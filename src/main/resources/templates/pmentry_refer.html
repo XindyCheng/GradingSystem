@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>方案经理录入表（引用版）</title>
+	<link rel="stylesheet" href="../static/css/pmentry.css">
+</head>
+<body>
+<div class="wrapper">
+	<form name="my_form">
+		<table class="form_table" border="1" cellspacing="0" align="center">
+			<tr>
+				<td colspan="5" align="center" height="25" style="font-weight:600">方案经理录入表</td>
+			</tr>
+			<tr>
+				<td colspan="5" align="center" height="25" style="font-weight:550">中止的项目也要填写，中止的项目的合同编号和收入为0</td>
+			</tr>
+			<tr>
+				<th>合同编号</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>供应商名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>客户名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>项目起始年份</th>
+				<td style="width:200px">
+					
+					<label>年</label>
+				</td>
+				<th >项目金额(单位：万元)</th>
+				<td>
+					
+					<label> 万元</label>
+				</td>
+			</tr>
+			<tr>
+				<th>项目状态</th>
+				<td colspan="3">
+					<input type="radio" id="underway" name="state" value="在途" />在途 
+					<input type="radio" id="complete" name="state" value="结束" />结束
+					<input type="radio" id="suspend" name="state" value="中止" />中止
+				</td>
+			</tr>
+			<tr>
+				<th>涉及能力</th>
+				<td colspan="3">
+					<input type="checkbox" id="ab1" name="ab1" value="5G" />5G
+					<input type="checkbox" id="ab2" name="ab2" value="云" />云
+					<input type="checkbox" id="ab3" name="ab3" value="网" />网
+					<input type="checkbox" id="ab4" name="ab4" value="物" />物
+					<input type="checkbox" id="ab5" name="ab5" value="安" />安
+					<input type="checkbox" id="ab6" name="ab6" value="硬件" />硬件
+					<input type="checkbox" id="ab7" name="ab7" value="垫资" />垫资
+					<input type="checkbox" id="ab8" name="ab8" value="工程" />工程
+					<input type="checkbox" id="ab9" name="ab9" value="其他" />其他
+				</td>
+			</tr>
+			<tr>
+				<th>行业BG</th>
+				<td>
+
+				</td>
+				<th>方案经理评分</th>
+				<td colspan="4">
+					
+					
+				</td>
+			</tr>
+			<tr>
+				<th>方案经理名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>填写人所在单位</th>
+				<td colspan="4">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>客户经理名称</th>
+				<td>
+					
+				</td>
+				<th>交付经理名称</th>
+				<td>
+					
+				</td>
+			</tr>
+			<tr>
+				<th>备注</th>
+				<td colspan="3">
+					<textarea id="comment" name="comment" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+	<script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
+	<script src="../static/js/jquery-3.3.1.min.js"></script>
+	<script src="../static/js/popper.min1.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/switch.js"></script>
+	<script src="../static/js/main4.js"></script>
+
+<script>
+window.onload = function(){
+	console.log("onload!");
+}
+</script>
+</body>
+</html>
