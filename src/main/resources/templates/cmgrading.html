@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>客户经理评价表</title>
@@ -26,7 +26,7 @@
 			<!--form panels-->
 			<div class="row">
 				<div class="col-12 col-lg-12 m-auto">
-					<form class="multisteps-form__form clearfix" action="#" method="post" id="wizard">
+					<form class="multisteps-form__form clearfix" action="" method="post" id="wizard">
 						<!--single form panel-->
 						<div class="multisteps-form__panel js-active" data-animation="slideVert">
 							<div class="inner pb-100">
@@ -36,7 +36,7 @@
 									<p class="pmentry_open" id="pmentry_open">
 									点此展开查看项目信息（不影响已填写内容，无需保存表单）<i></i>
 									</p>
-									<iframe id="pmentry_detail" src="pmentry_refer.html" height=700px width="100%" frameborder="0" scrolling="no"></iframe>
+									<iframe id="pmentry_detail" src="/pmentry_refer" height=700px width="100%" frameborder="0" scrolling="no"></iframe>
 									<p class="pmentry_close" id="pmentry_close">
 									收起项目信息<i></i>
 									</p>
@@ -109,8 +109,8 @@
 											<div class="col-md-6">
 												<div class="wizard-form-input position-relative form-group has-float-label">
 													<div class="n-select-option has-float-label">
-														<select name="credibility" id="credibility"">
-															<option>---请选择信誉口碑评分---</option>
+														<select name="credibility" id="credibility">
+															<option value="defult">---请选择信誉口碑评分---</option>
 															<option value="c0">0</option>
 															<option value="c1">1</option>
 															<option value="c2">2</option>
@@ -124,7 +124,7 @@
 											<div class="col-md-6">
 												<div class="wizard-form-input position-relative form-group has-float-label">
 													<div class="n-select-option has-float-label">
-														<select name="customerrelat" id="customerrelat"">
+														<select name="customerrelat" id="customerrelat">
 															<option>---请选择客情关系评分---</option>
 															<option value="c0">0</option>
 															<option value="c1">1</option>
@@ -132,8 +132,6 @@
 														</select>
 														<label>客情关系评分</label>
 													</div>
-<!-- 													<input type="text" class="form-control" name="customerrelat" placeholder="客情关系"> -->
-<!-- 													<label>客情关系</label> -->
 												</div>
 											</div>
 										</div>
@@ -155,7 +153,7 @@
 										<div class="wizard-form-input position-relative form-group has-float-label">
 											
 											<div class="n-select-option has-float-label">
-												<select name="customerrelat" id="customerrelat"">
+												<select name="customerrelat" id="customerrelat">
 													<option>---请选择方案支撑评分---</option>
 													<option value="c0">0</option>
 													<option value="c1">1</option>
@@ -182,7 +180,7 @@
 										</div>
 										<div class="wizard-form-input position-relative form-group has-float-label">
 											<div class="n-select-option has-float-label">
-												<select name="personnelquality" id="personnelquality"">
+												<select name="personnelquality" id="personnelquality">
 													<option>---请选择人员投入素质评分---</option>
 													<option value="c0">0</option>
 													<option value="c1">1</option>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>公司信息录入表</title>
+    <!-- 	<link rel="stylesheet" href="../static/css/pmentry_style.css"> -->
+    <link rel="stylesheet" href="../static/css/pmentry.css">
+</head>
+<body>
+<div class="wrapper">
+    <form name="my_form">
+        <table class="form_table" border="1" cellspacing="0" align="center">
+            <caption class="title"><h3>公司信息录入表</h3></caption>
+            <tr>
+                <td colspan="5" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">基础信息</td>
+            </tr>
+            <tr>
+                <th>公司名称</th>
+                <td colspan="3">
+                    <input type="text" id="contractnumber" name="contractnumber" style="height:50px;width:600px;" required="required" placeholder="请输入公司名称……" />
+                </td>
+            </tr>
+            <tr>
+                <th>统一社会信用代码</th>
+                <td colspan="3">
+                    <input type="text" id="supplier" name="supplier" style="height:50px;width:600px;" required="required" placeholder="请输入统一社会信用代码……" />
+                </td>
+            </tr>
+            <tr>
+                <th>法人</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入法人……" />
+                </td>
+            </tr>
+            <tr>
+                <th>纳税人识别号</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入纳税人识别号……" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系人</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入联系人……" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系电话</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入联系电话……" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系邮箱</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入联系邮箱……" />
+                </td>
+            </tr>
+            <tr>
+                <th>注册地址</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入注册地址……" />
+                </td>
+            </tr>
+            <tr>
+                <th>联系地址</th>
+                <td colspan="3">
+                    <input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入联系地址……" />
+                </td>
+            </tr>
+            <tr>
+                <th>是否接受垫资</th>
+                <td >
+                    <select name="dianzi" style="height:50px;width:200px;">
+                        <option value="yes"selected>是</option>
+                        <option value="no" >否</option>
+                    </select>
+                </td>
+                <th >投标额外承诺</th>
+                <td>
+                    <input type="text" id="total" name="total" required="required" style="height:50px;" placeholder="" />
+                </td>
+            </tr>
+        </table>
+        <br/>
+
+        <div style="height: 3px;background: #bebebe;position: relative;top: 0px;margin: 5px 0;margin-bottom: 30px;width: 100%;left: 0;"></div>
+
+
+
+
+
+
+        <table class="form_table" border="1" cellspacing="0" align="center" id="tab1" width="815">
+            <tr>
+                <td colspan="3" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">资质证书</td>
+            </tr>
+            <tr>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 200px">类别</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 500px">内容</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 100px">操作</th>
+            </tr>
+        </table>
+
+        <br/>
+
+
+        <div id="" style="text-align: center" >
+            请输入类别：<input type="text"  size="20" id="num" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
+            请输入内容：<input type="text"  size="20" id="name" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
+            <input type="button" onclick="add()" value="添加" id="ft">
+            <!-- <button onclick="add()">添加</button> -->
+        </div>  <!--第一行添加栏 -->
+
+        <!-- <form action=""> -->
+
+
+        </table>
+
+        <!-- </form> -->
+
+        <script>
+            function add() {
+                //创建各个结点
+                //得到表对象
+                var tb = document.getElementById("tab1");
+                //创建行对象
+                var tt = document.createElement("tr");
+                //创建列对象
+                var td1 = document.createElement("th");
+                var td2 = document.createElement("th");
+
+                var td4 = document.createElement("th");
+                //创建a对象
+                var pa = document.createElement("a");
+                //得到input标签中的值
+                var num1 = document.getElementById("num").value;
+                var mame1 = document.getElementById("name").value;
+
+
+                //设置td的操作a超链接
+                pa.setAttribute("onclick", "del(this)");
+                pa.setAttribute("href", "javascript:void(0)");//"javascript:void(0)"设置当前超链接不跳转，因为跳转了就还是跳转到了当前界面，
+                //那就会刷新当前页面所以会没有效果，就像你写的代码没有反应一样
+                pa.innerHTML = "删除"
+                //把获取到的值付给td元素
+                td1.innerHTML = num1;
+                td2.innerHTML = mame1;
+                // td4.innerHTML=bt;
+                //将各个td加入到tr中
+                tt.appendChild(td1);
+                tt.appendChild(td2);
+                //超链接放入td4
+                td4.appendChild(pa);
+                tt.appendChild(td4);
+
+                //tr加入到table
+                tb.appendChild(tt);
+
+
+            }
+            function del(obj) {
+
+                var judge = confirm("确认删除吗?")
+                if (judge = true) {
+                    tdNode = obj.parentNode;//得到td
+                    trNOde = tdNode.parentNode;//得到tr
+                    tbNOde = trNOde.parentNode;//得到table
+                    tbNOde.removeChild(trNOde);
+                }
+
+            }
+        </script>
+
+
+        <div style="height: 3px;background: #bebebe;position: relative;top: 0px;margin: 5px 0;margin-bottom: 30px;width: 100%;left: 0;"></div>
+
+
+
+
+
+
+        <table class="form_table" border="1" cellspacing="0" align="center" id="tab2" width="815">
+            <tr>
+                <td colspan="5" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">产品信息</td>
+            </tr>
+            <tr>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 150px">类型</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 200px">产品名称</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 550px">产品简介</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 150px">产品展示</th>
+                <th style="color: black;font-weight: 900;font-size: 25px;width: 100px">操作</th>
+            </tr>
+        </table>
+
+        <br/>
+
+
+        <div id="a1" style="text-align: center" >
+            请选择类型：<select style="background-color: #ddeef9;outline-color:#8080c0; height: 30px" id="selval">
+                            <option value="集成" >集成</option>
+                            <option value="软件" >软件</option>
+                            <option value="硬件" >硬件</option>
+                            <option value="工程施工" >工程施工</option>
+                            <option value="算法" >算法</option>
+                        </select>
+            请输入产品名称：<input type="text"  size="20" id="proname" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
+            请输入产品简介：<input type="text"  size="20" id="prodes" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
+            <input type="button" onclick="add2()" value="添加" id="aaa">
+            <!-- <button onclick="add()">添加</button> -->
+        </div>  <!--第一行添加栏 -->
+
+        <!-- <form action=""> -->
+
+
+        </table>
+        <script>
+            function add2() {
+                //创建各个结点
+                //得到表对象
+                var tb = document.getElementById("tab2");
+                //创建行对象
+                var tt = document.createElement("tr");
+                //创建列对象
+                var td1 = document.createElement("th");
+                var td2 = document.createElement("th");
+                var td3 = document.createElement("th");
+
+                var td4 = document.createElement("th");
+                var td5 = document.createElement("th");
+                //创建a对象
+                var pa = document.createElement("a");
+                //得到input标签中的值
+                var num1 = document.getElementById("selval").value;
+                var mame1 = document.getElementById("proname").value;
+                var des = document.getElementById("prodes").value;
+
+                //设置td的操作a超链接
+                pa.setAttribute("onclick", "del(this)");
+                pa.setAttribute("href", "javascript:void(0)");//"javascript:void(0)"设置当前超链接不跳转，因为跳转了就还是跳转到了当前界面，
+                //那就会刷新当前页面所以会没有效果，就像你写的代码没有反应一样
+                pa.innerHTML = "删除"
+                //把获取到的值付给td元素
+                td1.innerHTML = num1;
+                td2.innerHTML = mame1;
+                td3.innerHTML = des
+                td5.innerHTML = "<input type=\"file\"  value=\"添加\" id=\"wenjian\">"
+                // td4.innerHTML=bt;
+                //将各个td加入到tr中
+                tt.appendChild(td1);
+                tt.appendChild(td2);
+                tt.appendChild(td3);
+                tt.appendChild(td5);
+                //超链接放入td4
+                td4.appendChild(pa);
+                tt.appendChild(td4);
+
+                //tr加入到table
+                tb.appendChild(tt);
+
+
+            }
+            function del(obj) {
+
+                var judge = confirm("确认删除吗?")
+                if (judge = true) {
+                    tdNode = obj.parentNode;//得到td
+                    trNOde = tdNode.parentNode;//得到tr
+                    tbNOde = trNOde.parentNode;//得到table
+                    tbNOde.removeChild(trNOde);
+                }
+
+            }
+        </script>
+
+
+    </form>
+</div>
+
+
+
+</body>
+</html>
