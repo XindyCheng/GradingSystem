@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>方案经理录入表（引用版）</title>
@@ -17,8 +17,7 @@
 			</tr>
 			<tr>
 				<th>合同编号</th>
-				<td colspan="3">
-					
+				<td th:text="${entry.contractnumber}" colspan="3">	
 				</td>
 			</tr>
 			<tr>
