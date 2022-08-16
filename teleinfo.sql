@@ -35,7 +35,6 @@ CREATE TABLE `user`  (
 INSERT INTO `user` VALUES (1, 'admin', '123');
 INSERT INTO `user` VALUES (2, 'cindy', '456');
 insert into user values(3,'test','123');
-insert into user(password) values("123");
 
 
 -- ----------------------------
@@ -63,8 +62,9 @@ CREATE TABLE `PM_entry`  (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '方案经理录入表' ROW_FORMAT = Dynamic;
 
-INSERT INTO `PM_entry` VALUES ('1','2022-7-29','123456','老总','小王','2019','150','1','0','A','小李','小张','小陈','仍需维护');
-insert into `PM_entry` values ('2','2022-8-1','34534','张总','老王','2020','200','0','4','C','小强','小红','小王','');
+insert into `PM_entry`(id,time,contract_number,supplier,client,start,total,state,bg,score,PM_name,department,CM_name,DM_name,comment) values ()
+INSERT INTO `PM_entry` VALUES ('1','2022-7-29','123456','老总','小王','2019','150','1','0','A','小李','领导','小张','小陈','仍需维护');
+insert into `PM_entry` values ('2','2022-8-1','34534','张总','老王','2020','200','0','4','C','小强','领导班子','小红','小王','');
 
 -- ----------------------------
 -- 涉及能力

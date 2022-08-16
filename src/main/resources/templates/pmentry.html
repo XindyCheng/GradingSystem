@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<title>方案经理录入表</title>
-<!-- 	<link rel="stylesheet" href="../static/css/pmentry_style.css"> -->
 	<link rel="stylesheet" href="../static/css/pmentry.css">
 </head>
 <body>
 <div class="wrapper">
-	<form name="my_form">
+	<form name="my_form" action="#" th:action="@{/addEntry}" th:object="${entry}" method="post">
 		<table class="form_table" border="1" cellspacing="0" align="center">
 		<caption class="title"><h3>方案经理录入表</h3></caption>
 			<tr>
@@ -20,39 +19,39 @@
 			<tr>
 				<th>合同编号</th>
 				<td colspan="3">
-					<input type="text" id="contractnumber" name="contractnumber" style="height:50px;width:600px;" required="required" placeholder="请输入合同编号……" />
+					<input type="text" th:field="*{contractnumber}" id="contractnumber" name="contractnumber" required="required" placeholder="请输入合同编号……" />
 				</td>
 			</tr>
 			<tr>
 				<th>供应商名称</th>
 				<td colspan="3">
-					<input type="text" id="supplier" name="supplier" style="height:50px;width:600px;" required="required" placeholder="请输入供应商名称……" />
+					<input type="text" th:field="*{supplier}" id="supplier" name="supplier" required="required" placeholder="请输入供应商名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>客户名称</th>
 				<td colspan="3">
-					<input type="text" id="client" name="client" style="height:50px;width:600px;" required="required" placeholder="请输入客户名称……" />
+					<input type="text" th:field="*{client}" id="client" name="client" required="required" placeholder="请输入客户名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>项目起始年份</th>
 				<td >
-					<select name="start" style="height:50px;width:100px;">
-						<option value="y2017">2017</option>
-						<option value="y2018">2018</option>
-						<option value="y2019" selected>2019</option>
-						<option value="y2020">2020</option>
-						<option value="y2021">2021</option>
-						<option value="y2022">2022</option>
-						<option value="y2023">2023</option>
-						<option value="y2024">2024</option>
+					<select th:field="*{start}" id="start" name="start" style="height:50px;width:100px;">
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019" selected>2019</option>
+						<option value="2020">2020</option>
+						<option value="2021">2021</option>
+						<option value="2022">2022</option>
+						<option value="2023">2023</option>
+						<option value="2024">2024</option>
 					</select>
 					<label>年</label>
 				</td>
 				<th >项目金额(单位：万元)</th>
 				<td>
-					<input type="text" id="total" name="total" required="required" style="height:50px;" placeholder="请输入总金额……" />
+					<input type="text" th:field="*{total}" id="total" name="total" required="required" style="width:150px;" placeholder="请输入总金额……" />
 					<label> 万元</label>
 				</td>
 			</tr>
@@ -67,73 +66,73 @@
 			<tr>
 				<th>涉及能力</th>
 				<td colspan="3">
-					<input type="checkbox" id="ab1" name="ab1" value="5G" />5G
-					<input type="checkbox" id="ab2" name="ab2" value="云" />云
-					<input type="checkbox" id="ab3" name="ab3" value="网" />网
-					<input type="checkbox" id="ab4" name="ab4" value="物" />物
-					<input type="checkbox" id="ab5" name="ab5" value="安" />安
-					<input type="checkbox" id="ab6" name="ab6" value="硬件" />硬件
-					<input type="checkbox" id="ab7" name="ab7" value="垫资" />垫资
-					<input type="checkbox" id="ab8" name="ab8" value="工程" />工程
-					<input type="checkbox" id="ab9" name="ab9" value="其他" />其他
+					<input type="checkbox" id="ab1" name="ab" value="5G" />5G
+					<input type="checkbox" id="ab2" name="ab" value="云" />云
+					<input type="checkbox" id="ab3" name="ab" value="网" />网
+					<input type="checkbox" id="ab4" name="ab" value="物" />物
+					<input type="checkbox" id="ab5" name="ab" value="安" />安
+					<input type="checkbox" id="ab6" name="ab" value="硬件" />硬件
+					<input type="checkbox" id="ab7" name="ab" value="垫资" />垫资
+					<input type="checkbox" id="ab8" name="ab" value="工程" />工程
+					<input type="checkbox" id="ab9" name="ab" value="其他" />其他
 				</td>
 			</tr>
 			<tr>
 				<th>行业BG</th>
 				<td>
-					<select name="bg" style="height:50px;width:100px">
-						<option value="bg1">数字政府</option>
-						<option value="bg2">大企业</option>
-						<option value="bg3">智慧城市</option>
-						<option value="bg4">金融</option>
-						<option value="bg5">互联网</option>
-						<option value="bg6">教育</option>
-						<option value="bg7">卫健</option>
+					<select id="bg" name="bg" style="height:50px;width:100px">
+						<option value="0">数字政府</option>
+						<option value="1">大企业</option>
+						<option value="2">智慧城市</option>
+						<option value="3">金融</option>
+						<option value="4">互联网</option>
+						<option value="5">教育</option>
+						<option value="6">卫健</option>
 					</select>
 				</td>
 				<th>方案经理评分</th>
 				<td colspan="4">
-					<select name="score" style="height:50px;width:100px">
-						<option value="score1">A</option>
-						<option value="score2">B</option>
-						<option value="score3">C</option>
-					<option value="score4">D</option>
+					<select th:field="*{score}" name="score" style="height:50px;width:100px">
+						<option value="A">A</option>
+						<option value="B">B</option>
+						<option value="C">C</option>
+						<option value="D">D</option>
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<th>方案经理名称</th>
 				<td colspan="3">
-					<input type="text" style="height:50px;width:600px;" id="pmname" name="pmname" required="required" placeholder="请输入填写人名称……" />
+					<input type="text" th:field="*{pmname}" style="height:50px;width:600px;" id="pmname" name="pmname" required="required" placeholder="请输入填写人名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>填写人所在单位</th>
 				<td colspan="4">
 					<div class="my_select-option">
-						<select style="width:200px;" name="unit1" id="unit1" onchange="changeUnit1(this.value)">
-							<option>--请选择单位--</option>
+						<select th:field="*{department}" style="width:200px;" name="department" id="unit1" onchange="changeUnit1(this.value)">
+							<option value="default">--请选择单位--</option>
 						</select>
-						<select name="unit2" id="unit2" onchange="changeUnit2(this.value)"></select>
-						<select name="unit3" id="unit3" onchange="changeUnit3(this.value)"></select>
-						<select name="unit4" id="unit4" onchange="changeUnit4(this.value)"></select>
+						<select name="department" id="unit2" onchange="changeUnit2(this.value)"></select>
+						<select name="department" id="unit3" onchange="changeUnit3(this.value)"></select>
+						<select name="department" id="unit4" onchange="changeUnit4(this.value)"></select>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>客户经理名称</th>
 				<td>
-					<input type="text" id="cmname" name="cmname" style="height:50px;width:180px" required="required" placeholder="请输入客户经理名称……" />
+					<input type="text" th:field="*{cmname}" id="cmname" name="cmname" style="height:50px;width:180px" required="required" placeholder="请输入客户经理名称……" />
 				</td>
 				<th>交付经理名称</th>
 				<td>
-					<input type="text" id="dmname" name="dmname" style="height:50px;" required="required" placeholder="请输入交付经理名称……" />
+					<input type="text" th:field="*{dmname}" id="dmname" name="dmname" style="width:200px;" required="required" placeholder="请输入交付经理名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>备注</th>
 				<td colspan="3">
-					<textarea id="comment" name="comment" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
+					<textarea th:field="*{comment}" id="comment" name="comment" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -151,97 +150,6 @@
 	<script src="../static/js/bootstrap.min.js"></script>
 	<script src="../static/js/switch.js"></script>
 	<script src="../static/js/main4.js"></script>
-	<script src="../static/js/cmgrading.js"></script>
-
-<script>
-window.onload = function(){
-	console.log("onload!");
-	var unit1 = document.getElementById("unit1");
-	document.getElementById("unit2").style.display='none';
-	document.getElementById("unit3").style.display='none';
-	document.getElementById("unit4").style.display='none';
-	unit1.options.length = 0;
-	var option0 = document.createElement("option");
-	option0.innerHTML = "--请选择单位--";
-	option0.value = 'none';
-	unit1.appendChild(option0);
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == '0'){
-			//创建option元素节点
-			var option = document.createElement("option");
-			//设置option元素节点的内容和value
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			//将新创建的option节点添加到下拉框中
-			unit1.appendChild(option);
-		}
-	}
-}
-function changeUnit1(val) {
-	var unit2 = document.getElementById("unit2");
-	unit2.options.length = 0;
-	unit3.options.length = 0;
-	unit4.options.length = 0;
-	var mark = 0;
-	document.getElementById("unit2").style.display='none';
-	document.getElementById("unit2").style.display='none';
-	document.getElementById("unit3").style.display='none';
-	document.getElementById("unit4").style.display='none';
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit2.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit2").style.display='';
-		document.getElementById("unit2").style.display='';
-	}
-}
-function changeUnit2(val) {
-	document.getElementById("unit3").style.display='none';
-	document.getElementById("unit4").style.display='none';
-	var unit3 = document.getElementById("unit3");
-	unit3.options.length = 0;
-	unit4.options.length = 0;
-	var mark = 0;
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit3.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit3").style.display='';
-	}
-}
-function changeUnit3(val) {
-	document.getElementById("unit4").style.display='none';
-	var unit4 = document.getElementById("unit4");
-	unit4.options.length = 0;
-	var mark = 0;
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit4.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit4").style.display='';
-	}
-}
-</script>
+	<script src="../static/js/pmentry.js"></script>
 </body>
 </html>

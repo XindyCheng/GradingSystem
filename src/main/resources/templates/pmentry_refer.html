@@ -8,7 +8,7 @@
 <body>
 <div class="wrapper">
 	<form name="my_form">
-		<table class="form_table" border="1" cellspacing="0" align="center">
+		<table th:each="entry:$<entry>" class="form_table" border="1" cellspacing="0" align="center">
 			<tr>
 				<td colspan="5" align="center" height="25" style="font-weight:600">方案经理录入表</td>
 			</tr>
@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<th>合同编号</th>
-				<td th:text="${entry.contractnumber}" colspan="3">	
+				<td colspan="3">	
 				</td>
 			</tr>
 			<tr>

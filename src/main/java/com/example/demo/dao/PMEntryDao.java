@@ -4,6 +4,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -25,6 +27,7 @@ public interface PMEntryDao {
 	@Update("")
 	public int update();
 	
-	@Insert("insert into `PM_entry` values (#{id},#{time},#{contractnumber},#{supplier},#{client},#{start},#{total},#{state},#{bg},#{score},#{pmname},#{cmname},#{dmname},#{comment})")
-	public int insert(PMEntry entry);
+	@Insert("insert into `PM_entry`(time,contract_number,supplier,client,start,total,state,bg,score,PM_name,department,CM_name,DM_name,comment) values (#{entry.time},#{entry.contractnumber},#{entry.supplier},#{entry.client},#{entry.start},#{entry.total},#{entry.state},#{entry.bg},#{entry.score},#{entry.pmname},#{entry.department},#{entry.cmname},#{entry.dmname},#{entry.comment})")
+	@Options(useGeneratedKeys = true,keyProperty = "entry.id")
+	public int insert(@Param("entry") PMEntry entry);
 }

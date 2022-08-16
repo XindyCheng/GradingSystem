@@ -28,10 +28,15 @@
 .form_table td{
 	color: #5756a2;
 }
+.form_table input[type="text"]{
+  height:50px;
+  width:600px
+}
 .form_table input{
 	background-color: #ddeef9;
 	border-style: none;
 	outline-color:#8080c0;
+
 }
 .form_table select{
 	background-color: #ddeef9;

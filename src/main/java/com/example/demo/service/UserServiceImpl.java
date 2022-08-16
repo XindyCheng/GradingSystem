@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -26,6 +28,24 @@ public class UserServiceImpl implements UserService {
 	
 	public User getByName(String name) {
 		return userDao.selectByName(name);
+	}
+	
+	public HashMap<Boolean, String> Login(String name, String psw) {
+		HashMap<Boolean, String> result = new HashMap<Boolean, String>();
+		User user = userDao.selectByName(name);
+		if(user==null) {
+			result.put(false, "用户不存在！");
+			return result;
+		}
+		else if (psw.equals(user.getPassword())) {
+			result.put(true, "登陆成功");
+			return result;
+		}
+		else {
+			result.put(false, "密码错误！");
+			return result;
+		}
+
 	}
 
 
