@@ -26,7 +26,7 @@
 			<!--form panels-->
 			<div class="row">
 				<div class="col-12 col-lg-12 m-auto">
-					<form class="multisteps-form__form clearfix" action="" method="post" id="wizard">
+					<form class="multisteps-form__form clearfix" action="#" th:action="@{/addCMGrading}" th:object="${grading}" method="post" id="wizard">
 						<!--single form panel-->
 						<div class="multisteps-form__panel js-active" data-animation="slideVert">
 							<div class="inner pb-100">
@@ -34,9 +34,9 @@
 									<h2>客户经理评价表</h2>
 									<p>请对本项目的合作商进行评分</p>
 									<p class="pmentry_open" id="pmentry_open">
-									点此展开查看项目信息（不影响已填写内容，无需保存表单）<i></i>
+									点此查看并选择项目列表<i></i>
 									</p>
-									<iframe id="pmentry_detail" src="/pmentry_refer" height=700px width="100%" frameborder="0" scrolling="no"></iframe>
+									<iframe id="pmentry_detail" src="/grading_list" width="100%" height="400px" frameborder="0"></iframe>
 									<p class="pmentry_close" id="pmentry_close">
 									收起项目信息<i></i>
 									</p>
@@ -46,14 +46,14 @@
 								<div class="wizard-content-form">
 									<div class="wizard-form-field">
 										<div class="wizard-form-input position-relative form-group has-float-label">
-											<input type="text" name="name" class="form-control" placeholder="请输入填写人本人姓名">
+											<input type="text" th:field="*{cmname}" class="form-control" placeholder="请输入填写人本人姓名">
 											<label>填写人本人姓名</label>
 										</div>
 										<div class="row">
 											<div class="col-md-3">
 												<div class="n-select-option has-float-label">
 													<select name="unit1" id="unit1" onchange="changeUnit1(this.value)">
-														<option>--请选择单位--</option>
+														<option value="-1">--请选择单位--</option>
 													</select>
 													<label>单位</label>
 												</div>
@@ -86,10 +86,10 @@
 											<div class="col-md-6">
 												<div class="badge-selection">
 													<span>信誉口碑：</span><br/>
-													<span>企业信用口碑高：9-10分；</span><br/>
-													<span>企业信用口碑良好：6-8分；</span><br/>
-													<span>企业信用口碑一般：4-5分；</span><br/>
-													<span>企业信用口碑差：0-3分</span><br/>
+													<span>企业信用口碑高：5分；</span><br/>
+													<span>企业信用口碑良好：3-4分；</span><br/>
+													<span>企业信用口碑一般：1-2分；</span><br/>
+													<span>企业信用口碑差：0分</span><br/>
 													<span></span>
 												</div>
 											</div>
@@ -109,19 +109,14 @@
 											<div class="col-md-6">
 												<div class="wizard-form-input position-relative form-group has-float-label">
 													<div class="n-select-option has-float-label">
-														<select name="credibility" id="credibility">
-															<option value="defult">---请选择信誉口碑评分---</option>
-															<option value="c0">0</option>
-															<option value="c1">1</option>
-															<option value="c2">2</option>
-															<option value="c3">3</option>
-															<option value="c4">4</option>
-															<option value="c5">5</option>
-															<option value="c6">6</option>
-															<option value="c7">7</option>
-															<option value="c8">8</option>
-															<option value="c9">9</option>
-															<option value="c10">10</option>
+														<select th:field="*{credibility}">
+															<option value="-1">---请选择信誉口碑评分---</option>
+															<option value="0">0</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
 														</select>
 														<label>信誉口碑评分</label>
 													</div>
@@ -132,14 +127,14 @@
 											<div class="col-md-6">
 												<div class="wizard-form-input position-relative form-group has-float-label">
 													<div class="n-select-option has-float-label">
-														<select name="customerrelat" id="customerrelat">
-															<option>---请选择客情关系评分---</option>
-															<option value="c0">0</option>
-															<option value="c1">1</option>
-															<option value="c2">2</option>
-															<option value="c3">3</option>
-															<option value="c4">4</option>
-															<option value="c5">5</option>
+														<select th:field="*{customerrelat}">
+															<option value="-1">---请选择客情关系评分---</option>
+															<option value="0">0</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
 														</select>
 														<label>客情关系评分</label>
 													</div>
@@ -164,19 +159,19 @@
 										<div class="wizard-form-input position-relative form-group has-float-label">
 											
 											<div class="n-select-option has-float-label">
-												<select name="customerrelat" id="customerrelat">
-													<option>---请选择方案支撑评分---</option>
-															<option value="c0">0</option>
-															<option value="c1">1</option>
-															<option value="c2">2</option>
-															<option value="c3">3</option>
-															<option value="c4">4</option>
-															<option value="c5">5</option>
-															<option value="c6">6</option>
-															<option value="c7">7</option>
-															<option value="c8">8</option>
-															<option value="c9">9</option>
-															<option value="c10">10</option>
+												<select th:field="*{projectsupport}" >
+													<option value="-1">---请选择方案支撑评分---</option>
+															<option value="0">0</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+															<option value="6">6</option>
+															<option value="7">7</option>
+															<option value="8">8</option>
+															<option value="9">9</option>
+															<option value="10">10</option>
 												</select>
 												<label>方案支撑评分</label>
 											</div>
@@ -190,28 +185,23 @@
 										<div class="wizard-form-input position-relative form-group has-float-label">
 											<div class="badge-selection">
 												<span>人员投入素质：</span><br/>
-												<span>人员投入素质高：8-10分;</span><br/>
-												<span>人员投入素质良好：6-7分;</span><br/>
-												<span>人员投入素质一般：4-5分;</span><br/>
-												<span>人员投入素质差：0-3分；</span><br/>
+												<span>人员投入素质高：5分;</span><br/>
+												<span>人员投入素质良好：3-4分;</span><br/>
+												<span>人员投入素质一般：1-2分;</span><br/>
+												<span>人员投入素质差：0分；</span><br/>
 												<span></span>
 											</div>
 										</div>
 										<div class="wizard-form-input position-relative form-group has-float-label">
 											<div class="n-select-option has-float-label">
-												<select name="personnelquality" id="personnelquality">
-													<option>---请选择人员投入素质评分---</option>
-															<option value="c0">0</option>
-															<option value="c1">1</option>
-															<option value="c2">2</option>
-															<option value="c3">3</option>
-															<option value="c4">4</option>
-															<option value="c5">5</option>
-															<option value="c6">6</option>
-															<option value="c7">7</option>
-															<option value="c8">8</option>
-															<option value="c9">9</option>
-															<option value="c10">10</option>
+												<select th:field="*{personnelquality}">
+													<option value="-1">---请选择人员投入素质评分---</option>
+															<option value="0">0</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
 												</select>
 												<label>人员投入素质评分</label>
 											</div>

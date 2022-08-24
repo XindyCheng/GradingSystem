@@ -27,7 +27,15 @@ public interface PMEntryDao {
 	@Update("")
 	public int update();
 	
-	@Insert("insert into `PM_entry`(time,contract_number,supplier,client,start,total,state,bg,score,PM_name,department,CM_name,DM_name,comment) values (#{entry.time},#{entry.contractnumber},#{entry.supplier},#{entry.client},#{entry.start},#{entry.total},#{entry.state},#{entry.bg},#{entry.score},#{entry.pmname},#{entry.department},#{entry.cmname},#{entry.dmname},#{entry.comment})")
+	@Insert("<script>"
+			+"insert into `PM_entry`"
+			+ "(time,contract_number,supplier,client,start,total,state,bg,"
+			+ "score,PM_name,department,CM_name,DM_name,comment) "
+			+ "values(#{entry.time},#{entry.contractnumber},#{entry.supplier},"
+			+ "#{entry.client},#{entry.start},#{entry.total},#{entry.state},"
+			+ "#{entry.bg},#{entry.score},#{entry.pmname},#{entry.department},"
+			+ "#{entry.cmname},#{entry.dmname},#{entry.comment})"
+			+"</script>")
 	@Options(useGeneratedKeys = true,keyProperty = "entry.id")
 	public int insert(@Param("entry") PMEntry entry);
 }

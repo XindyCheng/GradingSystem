@@ -8,30 +8,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.dao.CMGradingDao;
-import com.example.demo.entity.CMGrading;
-import com.example.demo.service.CMGradingService;
+import com.example.demo.entity.DMGrading;
+import com.example.demo.service.DMGradingService;
 import com.example.demo.service.DepartmentService;
 
 @Controller
-public class CMGradingController {
+public class DMGradingController {
 	@Autowired
-	private CMGradingService gradingService;
+	private DMGradingService gradingService;
+	
 	@Autowired
 	private DepartmentService deService;
 	
-	@GetMapping("/cmgrading")
+	@GetMapping("/dmgrading")
 	public String toCmgrading(Model model) {
-		model.addAttribute("grading", new CMGrading());
-		return "/cmgrading";
+		model.addAttribute("grading", new DMGrading());
+		return "/dmgrading";
 	}
 	
-	@PostMapping("/addCMGrading")
-	public String addGrading(@ModelAttribute CMGrading grading, 
+	@PostMapping("/addDMGrading")
+	public String addGrading(@ModelAttribute DMGrading grading, 
 			@RequestParam(name="unit1", defaultValue="-1")Integer unit1,
 			@RequestParam(name="unit2", defaultValue="-1")Integer unit2,
 			@RequestParam(name="unit3", defaultValue="-1")Integer unit3,
@@ -45,5 +43,7 @@ public class CMGradingController {
 		}
 		return null;
 	}
+
+
 
 }

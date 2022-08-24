@@ -19,25 +19,25 @@
 			<tr>
 				<th>合同编号</th>
 				<td colspan="3">
-					<input type="text" th:field="*{contractnumber}" id="contractnumber" name="contractnumber" required="required" placeholder="请输入合同编号……" />
+					<input type="text" th:field="*{contractnumber}" required="required" placeholder="请输入合同编号……" />
 				</td>
 			</tr>
 			<tr>
 				<th>供应商名称</th>
 				<td colspan="3">
-					<input type="text" th:field="*{supplier}" id="supplier" name="supplier" required="required" placeholder="请输入供应商名称……" />
+					<input type="text" th:field="*{supplier}" required="required" placeholder="请输入供应商名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>客户名称</th>
 				<td colspan="3">
-					<input type="text" th:field="*{client}" id="client" name="client" required="required" placeholder="请输入客户名称……" />
+					<input type="text" th:field="*{client}" required="required" placeholder="请输入客户名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>项目起始年份</th>
 				<td >
-					<select th:field="*{start}" id="start" name="start" style="height:50px;width:100px;">
+					<select th:field="*{start}" style="height:50px;width:100px;">
 						<option value="2017">2017</option>
 						<option value="2018">2018</option>
 						<option value="2019" selected>2019</option>
@@ -51,16 +51,16 @@
 				</td>
 				<th >项目金额(单位：万元)</th>
 				<td>
-					<input type="text" th:field="*{total}" id="total" name="total" required="required" style="width:150px;" placeholder="请输入总金额……" />
+					<input type="text" th:field="*{total}" required="required" style="width:150px;" placeholder="请输入总金额……" />
 					<label> 万元</label>
 				</td>
 			</tr>
 			<tr>
 				<th>项目状态</th>
 				<td colspan="3">
-					<input type="radio" id="underway" name="state" value="在途" />在途 
-					<input type="radio" id="complete" name="state" value="结束" />结束
-					<input type="radio" id="suspend" name="state" value="中止" />中止
+					<input type="radio" th:field="*{state}" id="underway" name="state" value="0" />在途 
+					<input type="radio" th:field="*{state}" id="complete" name="state" value="1" />结束
+					<input type="radio" th:field="*{state}" id="suspend" name="state" value="2" />中止
 				</td>
 			</tr>
 			<tr>
@@ -80,7 +80,7 @@
 			<tr>
 				<th>行业BG</th>
 				<td>
-					<select id="bg" name="bg" style="height:50px;width:100px">
+					<select th:field="*{bg}" style="height:50px;width:100px">
 						<option value="0">数字政府</option>
 						<option value="1">大企业</option>
 						<option value="2">智慧城市</option>
@@ -92,7 +92,7 @@
 				</td>
 				<th>方案经理评分</th>
 				<td colspan="4">
-					<select th:field="*{score}" name="score" style="height:50px;width:100px">
+					<select th:field="*{score}" style="height:50px;width:100px">
 						<option value="A">A</option>
 						<option value="B">B</option>
 						<option value="C">C</option>
@@ -110,29 +110,29 @@
 				<th>填写人所在单位</th>
 				<td colspan="4">
 					<div class="my_select-option">
-						<select th:field="*{department}" style="width:200px;" name="department" id="unit1" onchange="changeUnit1(this.value)">
+						<select th:value="#{unit1}" style="width:200px;" name="unit1" id="unit1" onchange="changeUnit1(this.value)">
 							<option value="default">--请选择单位--</option>
 						</select>
-						<select name="department" id="unit2" onchange="changeUnit2(this.value)"></select>
-						<select name="department" id="unit3" onchange="changeUnit3(this.value)"></select>
-						<select name="department" id="unit4" onchange="changeUnit4(this.value)"></select>
+						<select th:value="#{unit2}" name="unit2" id="unit2" onchange="changeUnit2(this.value)"></select>
+						<select th:value="#{unit3}"  name="unit3" id="unit3" onchange="changeUnit3(this.value)"></select>
+						<select th:value="#{unit4}" name="unit4" id="unit4" onchange="changeUnit4(this.value)"></select>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>客户经理名称</th>
 				<td>
-					<input type="text" th:field="*{cmname}" id="cmname" name="cmname" style="height:50px;width:180px" required="required" placeholder="请输入客户经理名称……" />
+					<input type="text" th:field="*{cmname}" style="height:50px;width:180px" required="required" placeholder="请输入客户经理名称……" />
 				</td>
 				<th>交付经理名称</th>
 				<td>
-					<input type="text" th:field="*{dmname}" id="dmname" name="dmname" style="width:200px;" required="required" placeholder="请输入交付经理名称……" />
+					<input type="text" th:field="*{dmname}" style="width:200px;" required="required" placeholder="请输入交付经理名称……" />
 				</td>
 			</tr>
 			<tr>
 				<th>备注</th>
 				<td colspan="3">
-					<textarea th:field="*{comment}" id="comment" name="comment" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
+					<textarea th:field="*{comment}" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
 				</td>
 			</tr>
 			<tr>

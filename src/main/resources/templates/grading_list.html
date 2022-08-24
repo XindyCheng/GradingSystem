@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>项目列表</title>
+	<link rel="stylesheet" href="../static/css/pmentry.css">
+</head>
+<body>
+<div class="wrapper" id="div_list" name="div_list">
+	<form name="my_form" action="#"  method="post" >
+		<table class="form_table" border="1" cellspacing="0" align="center">
+		<caption class="title"><h3>项目列表</h3></caption>
+			<tr>
+				<td colspan="5" align="center" height="25" style="font-weight:550">点击项目对合作商进行评分</td>
+			</tr>
+			<tr>
+				<th style="width:50px;"></th>
+				<th>项目名称</th>
+				<th>供应商名称</th>
+				<th>客户经理</th>
+				<th>交付经理</th>
+			</tr>
+			<tr th:each="entry:${entry_list}">
+				<td><input type="checkbox">选择</td>
+				<td th:text="${entry.contractnumber}">项目名1</td>
+				<td th:text="${entry.supplier}">供应商名称1</td>
+				<td th:text="${entry.cmname}">客户经理名称1</td>
+				<td th:text="${entry.dmname}">交付经理名称1</td>
+				<td><button type="button" onclick="toConfirm()">查看详情</button></td>
+			</tr>
+			
+		</table>
+	</form>
+</div>
+<div class="wrapper" id="div_project" name="div_list" style="display:none;">
+	<table  class="form_table" border="1" cellspacing="0" align="center">
+			<tr>
+				<td colspan="5" align="center" height="25" style="font-weight:600">项目信息表</td>
+			</tr>
+			<tr>
+				<th>合同编号</th>
+				<td colspan="3">	
+				</td>
+			</tr>
+			<tr>
+				<th>供应商名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>客户名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>方案经理名称</th>
+				<td colspan="3">
+					
+				</td>
+			</tr>
+			<tr>
+				<th>客户经理名称</th>
+				<td style="width:200px">
+					
+				</td>
+				<th>交付经理名称</th>
+				<td style="width:200px">
+					
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5" align="center"><button type="button" onclick="toConfirm()">返回列表</button></td>
+			</tr>
+		</table>
+</div>
+
+	<script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
+	<script src="../static/js/jquery-3.3.1.min.js"></script>
+	<script src="../static/js/popper.min1.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+	<script src="../static/js/switch.js"></script>
+	<script src="../static/js/main4.js"></script>
+	<script src="../static/js/pmentry.js"></script>
+	<script type="text/javascript">
+	function toConfirm(){
+		var div1 = document.getElementById("div_list");
+		var div2 = document.getElementById("div_project");
+		if(div1.style.display == "none"){
+			div1.style.display = "block";
+			div2.style.display = "none";
+		}
+		else{
+			div2.style.display = "block";
+			div1.style.display = "none";
+		}
+	}
+	</script>
+</body>
+</html>

@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="wrapper">
-	<form name="my_form">
-		<table th:each="entry:$<entry>" class="form_table" border="1" cellspacing="0" align="center">
+	<div >
+		<table  class="form_table" border="1" cellspacing="0" align="center">
 			<tr>
 				<td colspan="5" align="center" height="25" style="font-weight:600">方案经理录入表</td>
 			</tr>
@@ -106,7 +106,7 @@
 				</td>
 			</tr>
 		</table>
-	</form>
+	</div>
 </div>
 	<script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
 	<script src="../static/js/jquery-3.3.1.min.js"></script>
@@ -119,6 +119,7 @@
 window.onload = function(){
 	console.log("onload!");
 }
+
 </script>
 </body>
 </html>

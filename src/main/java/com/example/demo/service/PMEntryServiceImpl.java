@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -25,6 +26,10 @@ public class PMEntryServiceImpl implements PMEntryService{
 		return entrydao.selectById(id);
 	}
 	
+	public List<PMEntry> getAll(){
+		return entrydao.selectAll();
+	}
+	
 	public int insertEntry(PMEntry entry) {
 		Date date = new Date();
 		entry.setTime(date);
@@ -40,35 +45,5 @@ public class PMEntryServiceImpl implements PMEntryService{
 		return insert_code;
 		
 	}
-	public Integer addEntry(String contractnumber,String supplier,
-			String client, Integer start, Double total, Integer state, Integer bg, String score,
-			String pmname, String department, String cmname, String dmname, String comment){
-		PMEntry entry = new PMEntry();
-		Date date = new Date();
-		entry.setTime(date);
-//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		formatter.format(date);
-		entry.setBg(bg);
-		entry.setClient(client);
-		entry.setCmname(cmname);
-		entry.setComment(comment);
-		entry.setContractnumber(contractnumber);
-		entry.setDepartment(department);
-		entry.setDmname(dmname);
-		entry.setPmname(pmname);
-		entry.setScore(score);
-		entry.setStart(start);
-		entry.setState(state);
-		entry.setSupplier(supplier);
-		entry.setTotal(total);
-		Integer insert_code = 0;
-		try {
-			insert_code = entrydao.insert(entry);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return insert_code;
-	}
-	
 
 }

@@ -118,3 +118,15 @@ CREATE TABLE `DM_grading`  (
 	`total` decimal(10, 2) NULL DEFAULT 0.00 COMMENT '总分',
 	PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '交付经理评价表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- 单位列表
+-- ----------------------------
+DROP TABLE IF EXISTS `departments`;
+CREATE TABLE `departments`  (
+	`id` int NOT NULL COMMENT '部门id',
+	`layer` int NOT NULL COMMENT '部门所属层级',
+	`p_id` int not null comment '父节点id',
+	`name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '部门名称',
+	PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '单位列表' ROW_FORMAT = Dynamic;

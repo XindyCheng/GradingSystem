@@ -24,7 +24,9 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		registry.addViewController("/pmentry_refer").setViewName("pmentry_refer");
 		registry.addViewController("/admin_login").setViewName("admin_login");
 		registry.addViewController("/admin_index").setViewName("admin_index");
+		registry.addViewController("/admin_project").setViewName("admin_project");
 		registry.addViewController("/thanks").setViewName("thanks");
+//		registry.addViewController("/grading_list").setViewName("grading_list");
 	}
 //	@GetMapping("/cmgrading")
 //	public String cm_index() {	

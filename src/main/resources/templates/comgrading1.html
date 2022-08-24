@@ -10,9 +10,9 @@
 <div class="wrapper">
     <form name="my_form">
         <table class="form_table" border="1" cellspacing="0" align="center">
-            <caption class="title"><h3>公司信息录入表</h3></caption>
+            <caption class="title"><h3>公司信息维护表</h3></caption>
             <tr>
-                <td colspan="5" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">基础信息</td>
+                <td colspan="5" align="center" height="35" style="font-weight: 550;font-size: 30px">基础信息</td>
             </tr>
             <tr>
                 <th>公司名称</th>
@@ -78,7 +78,7 @@
                 </td>
                 <th >投标额外承诺</th>
                 <td>
-                    <input type="text" id="total" name="total" required="required" style="height:50px;" placeholder="" />
+                    <input type="text" id="total" name="total" required="required" style="width:200px;" placeholder="" />
                 </td>
             </tr>
         </table>
@@ -91,29 +91,36 @@
 
 
 
-        <table class="form_table" border="1" cellspacing="0" align="center" id="tab1" width="815">
+        <table class="form_table" border="1" cellspacing="0" align="center" id="tab1" >
             <tr>
-                <td colspan="3" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">资质证书</td>
+                <td colspan="4" align="center" height="35" style="font-weight: 550;font-size: 30px">资质证书</td>
             </tr>
             <tr>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 200px">类别</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 500px">内容</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 100px">操作</th>
+                <th style="width: 200px">类别</th>
+                <th style="width: 500px">内容</th>
+                <th style="width: 200px">有效期</th>
+                <th style="width: 100px">操作</th>
+                
+            </tr>
+            <tr>
+                <th>
+                    <input type="text"  size="20" id="num" placeholder="请输入类别……" style="background-color: #ddeef9;outline-color:#8080c0;width:200px;height: 30px">
+                </th>
+                <th>
+                    <input type="text"  size="20" id="num" placeholder="请输入内容……" style="background-color: #ddeef9;outline-color:#8080c0;width:500px;height: 30px">
+                </th>
+                <th align="left">
+                    <input type="radio"  name="state" value="0" />长期有效
+                    </br>
+                    <input type="radio"  name="state" value="0" />有效期至：
+                </th>
+                <th>
+                    <input type="button" onclick="add()" value="添加" id="ft">
+                </th>
             </tr>
         </table>
 
         <br/>
-
-
-        <div id="" style="text-align: center" >
-            请输入类别：<input type="text"  size="20" id="num" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
-            请输入内容：<input type="text"  size="20" id="name" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
-            <input type="button" onclick="add()" value="添加" id="ft">
-            <!-- <button onclick="add()">添加</button> -->
-        </div>  <!--第一行添加栏 -->
-
-        <!-- <form action=""> -->
-
 
         </table>
 
@@ -182,35 +189,41 @@
 
         <table class="form_table" border="1" cellspacing="0" align="center" id="tab2" width="815">
             <tr>
-                <td colspan="5" align="center" height="35" style="color: red;font-weight: 550;font-size: 30px">产品信息</td>
+                <td colspan="5" align="center" height="35" style="font-weight: 550;font-size: 30px">产品信息</td>
             </tr>
             <tr>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 150px">类型</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 200px">产品名称</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 550px">产品简介</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 150px">产品展示</th>
-                <th style="color: black;font-weight: 900;font-size: 25px;width: 100px">操作</th>
+                <th style="width: 150px">类型</th>
+                <th style="width: 200px">产品名称</th>
+                <th style="width: 550px">产品简介（300字以内）</th>
+                <th style="width: 100px">操作</th>
             </tr>
-        </table>
-
-        <br/>
-
-
-        <div id="a1" style="text-align: center" >
-            请选择类型：<select style="background-color: #ddeef9;outline-color:#8080c0; height: 30px" id="selval">
+                
+            <tr>
+                <td>
+                    <select style="background-color: #ddeef9;outline-color:#8080c0; height: 30px" id="selval">
                             <option value="集成" >集成</option>
                             <option value="软件" >软件</option>
                             <option value="硬件" >硬件</option>
                             <option value="工程施工" >工程施工</option>
                             <option value="算法" >算法</option>
                         </select>
-            请输入产品名称：<input type="text"  size="20" id="proname" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
-            请输入产品简介：<input type="text"  size="20" id="prodes" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px">
-            <input type="button" onclick="add2()" value="添加" id="aaa">
-            <!-- <button onclick="add()">添加</button> -->
-        </div>  <!--第一行添加栏 -->
+                </td>
+                <td>
+                    <input type="text"  size="20" id="proname" style="background-color: #ddeef9;outline-color:#8080c0; height: 30px;width:300px">
+                </td>
+                <td>
+                    <textarea cols="80" rows="5" placeholder="请输入产品简介……"/></textarea>
+                </td>
+                <td>
+                    <input type="button" onclick="add2()" value="添加" id="aaa">
+                </td>
+            </tr>
+        </table>
 
-        <!-- <form action=""> -->
+        <br/>
+
+
+        
 
 
         </table>
