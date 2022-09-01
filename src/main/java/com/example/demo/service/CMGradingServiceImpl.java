@@ -13,23 +13,25 @@ import com.example.demo.dao.CMGradingDao;
 import com.example.demo.entity.CMGrading;
 
 @Service
-public class CMGradingServiceImpl implements CMGradingService{
-	
-	@Autowired
-	@Resource
-	private CMGradingDao gradingdao;
-	
-	public int add(CMGrading grading) {
-		Integer insert_code = 0;
-		double total=grading.getCredibility() + grading.getCustomerrelat() + 
-				grading.getPersonnelquality() + grading.getProjectsupport();
-		grading.setTotal(total);
-		Date date = new Date();
-		grading.setTime(date);
-		final Log log=LogFactory.getLog(CMGradingServiceImpl.class);
-		log.info(grading);
-		insert_code = gradingdao.insert(grading);
-		return insert_code;
-	}
-	
+public class CMGradingServiceImpl implements CMGradingService {
+
+    @Autowired
+    @Resource
+    private CMGradingDao gradingdao;
+
+    public int add(CMGrading grading) {
+        Integer increment_code = 0;
+        double total = grading.getCredibility() + grading.getCustomerrelat() + grading.getPersonnelquality()
+                + grading.getProjectsupport();
+        grading.setTotal(total);
+        Date date = new Date();
+        grading.setTime(date);
+        final Log log = LogFactory.getLog(CMGradingServiceImpl.class);
+        log.info(grading);
+        gradingdao.insert(grading);
+        increment_code = grading.getId();
+        System.out.println("cmgrading自增主键值" + increment_code);
+        return increment_code;
+    }
+
 }

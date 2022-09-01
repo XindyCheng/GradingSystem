@@ -1012,6 +1012,13 @@ select.form-control option[value=""][disabled] {
   color: #5756a2;
   font-weight: 700;
 }
+.wizard-content-item ul {
+  color: #5756a2;
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 20px;
+}
 .wizard-content-item p {
   color: #5756a2;
   font-size: 33px;

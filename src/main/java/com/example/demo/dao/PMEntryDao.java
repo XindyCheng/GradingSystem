@@ -27,11 +27,17 @@ public interface PMEntryDao {
 	@Update("")
 	public int update();
 	
+	@Update("update `PM_entry` set cm_id =#{cm_id} where id=#{pm_id}")
+	public int updateCM(int pm_id, int cm_id);
+	
+	@Update("update `PM_entry` set dm_id =#{dm_id} where id=#{pm_id}")
+	public int updateDM(int pm_id, int dm_id);
+	
 	@Insert("<script>"
 			+"insert into `PM_entry`"
-			+ "(time,contract_number,supplier,client,start,total,state,bg,"
+			+ "(time,name,contract_number,supplier,client,start,total,state,bg,"
 			+ "score,PM_name,department,CM_name,DM_name,comment) "
-			+ "values(#{entry.time},#{entry.contractnumber},#{entry.supplier},"
+			+ "values(#{entry.time},#{entry.name},#{entry.contractnumber},#{entry.supplier},"
 			+ "#{entry.client},#{entry.start},#{entry.total},#{entry.state},"
 			+ "#{entry.bg},#{entry.score},#{entry.pmname},#{entry.department},"
 			+ "#{entry.cmname},#{entry.dmname},#{entry.comment})"

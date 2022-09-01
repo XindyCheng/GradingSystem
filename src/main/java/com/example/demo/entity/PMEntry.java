@@ -21,6 +21,7 @@ public class PMEntry {
 	private Integer id;
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date time;
+	private String name;
 	private String contractnumber;
 	private String supplier;
 	private String client;

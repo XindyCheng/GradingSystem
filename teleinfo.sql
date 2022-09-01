@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS `PM_entry`;
 CREATE TABLE `PM_entry`  (
 	`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '表格id',
 	`time` datetime(0) NULL DEFAULT NULL COMMENT '表格填写时间',
+	`name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '项目名称',
 	`contract_number` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '合同编号',
 	`supplier` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '供应商名称',
 	`client` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '客户名称',
@@ -58,13 +59,12 @@ CREATE TABLE `PM_entry`  (
 	`department` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '方案经理所属部门',
 	`CM_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '客户经理名称',
 	`DM_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '交付经理名称',
+	`cm_id` int(11) NULL DEFAULT NULL COMMENT '客户经理评价表格id',
+	`dm_id` int(11)  NULL DEFAULT NULL COMMENT '交付经理评价表格id',
 	`comment` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+	PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '方案经理录入表' ROW_FORMAT = Dynamic;
 
-insert into `PM_entry`(id,time,contract_number,supplier,client,start,total,state,bg,score,PM_name,department,CM_name,DM_name,comment) values ()
-INSERT INTO `PM_entry` VALUES ('1','2022-7-29','123456','老总','小王','2019','150','1','0','A','小李','领导','小张','小陈','仍需维护');
-insert into `PM_entry` values ('2','2022-8-1','34534','张总','老王','2020','200','0','4','C','小强','领导班子','小红','小王','');
 
 -- ----------------------------
 -- 涉及能力

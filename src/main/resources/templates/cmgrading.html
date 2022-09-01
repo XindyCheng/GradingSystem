@@ -1,352 +1,220 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8">
-	<title>客户经理评价表</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../static/css/animate.min.css">
-	<link rel="stylesheet" href="../static/css/fontawesome-all.css">
-	<link rel="stylesheet" href="../static/css/style8.css">
-	<link rel="stylesheet" type="text/css" href="../static/css/switch1.css">
-	<!-- Color Alternatives -->
-	<link href="../static/css/color-21.css" rel="alternate stylesheet" type="text/css" title="color-2">
-	<link href="../static/css/color-3.css" rel="alternate stylesheet" type="text/css" title="color-3">
-	<link href="../static/css/color-4.css" rel="alternate stylesheet" type="text/css" title="color-4">
-	<link href="../static/css/color-5.css" rel="alternate stylesheet" type="text/css" title="color-5">
+<meta charset="utf-8">
+<title>客户经理评价表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/animate.min.css">
+<link rel="stylesheet" href="../static/css/fontawesome-all.css">
+<link rel="stylesheet" href="../static/css/style8.css">
+<link rel="stylesheet" type="text/css" href="../static/css/switch1.css">
+<!-- Color Alternatives -->
+<link href="../static/css/color-21.css" rel="alternate stylesheet" type="text/css" title="color-2">
+<link href="../static/css/color-3.css" rel="alternate stylesheet" type="text/css" title="color-3">
+<link href="../static/css/color-4.css" rel="alternate stylesheet" type="text/css" title="color-4">
+<link href="../static/css/color-5.css" rel="alternate stylesheet" type="text/css" title="color-5">
 </head>
 
 <body>
-	<div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-	<div id="page_wrapper" class="wrapper clearfix">
-		<!--multisteps-form-->
-		<div class="multisteps-form">
-		
-			<!--form panels-->
-			<div class="row">
-				<div class="col-12 col-lg-12 m-auto">
-					<form class="multisteps-form__form clearfix" action="#" th:action="@{/addCMGrading}" th:object="${grading}" method="post" id="wizard">
-						<!--single form panel-->
-						<div class="multisteps-form__panel js-active" data-animation="slideVert">
-							<div class="inner pb-100">
-								<div class="wizard-content-item text-center">
-									<h2>客户经理评价表</h2>
-									<p>请对本项目的合作商进行评分</p>
-									<p class="pmentry_open" id="pmentry_open">
-									点此查看并选择项目列表<i></i>
-									</p>
-									<iframe id="pmentry_detail" src="/grading_list" width="100%" height="400px" frameborder="0"></iframe>
-									<p class="pmentry_close" id="pmentry_close">
-									收起项目信息<i></i>
-									</p>
-								</div>
-								
-								
-								<div class="wizard-content-form">
-									<div class="wizard-form-field">
-										<div class="wizard-form-input position-relative form-group has-float-label">
-											<input type="text" th:field="*{cmname}" class="form-control" placeholder="请输入填写人本人姓名">
-											<label>填写人本人姓名</label>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<div class="n-select-option has-float-label">
-													<select name="unit1" id="unit1" onchange="changeUnit1(this.value)">
-														<option value="-1">--请选择单位--</option>
-													</select>
-													<label>单位</label>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="n-select-option has-float-label">
-													<select name="unit2" id="unit2" onchange="changeUnit2(this.value)">
-													</select>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="n-select-option has-float-label">
-													<select name="unit3" id="unit3" onchange="changeUnit3(this.value)">
-													</select>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="n-select-option has-float-label">
-													<select name="unit4" id="unit4" onchange="changeUnit4(this.value)">
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="line"></div>
-										<div class="wizard-day-item">
-											<span class="wizard-sub-text">综合实力（10分）</span>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-												<div class="badge-selection">
-													<span>信誉口碑：</span><br/>
-													<span>企业信用口碑高：5分；</span><br/>
-													<span>企业信用口碑良好：3-4分；</span><br/>
-													<span>企业信用口碑一般：1-2分；</span><br/>
-													<span>企业信用口碑差：0分</span><br/>
-													<span></span>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="badge-selection">
-													<span>客情关系：</span><br/>
-													<span>能及时获取客户有效信息：5分；</span><br/>
-													<span>日常有固定对接人与客户关系良好：3-4分；</span><br/>
-													<span>因本项目有沟通联系，且未有投诉：1-2分；</span><br/>
-													<span>很少有接触或有投诉：0分；</span><br/>
-													<span></span>
-												</div>
-											</div>
-										</div>
-										
-										<div class="row">
-											<div class="col-md-6">
-												<div class="wizard-form-input position-relative form-group has-float-label">
-													<div class="n-select-option has-float-label">
-														<select th:field="*{credibility}">
-															<option value="-1">---请选择信誉口碑评分---</option>
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-														</select>
-														<label>信誉口碑评分</label>
-													</div>
-<!-- 													<input type="text" class="form-control" name="credibility" placeholder="信誉口碑"> -->
-<!-- 													<label>信誉口碑</label> -->
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="wizard-form-input position-relative form-group has-float-label">
-													<div class="n-select-option has-float-label">
-														<select th:field="*{customerrelat}">
-															<option value="-1">---请选择客情关系评分---</option>
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-														</select>
-														<label>客情关系评分</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="line"></div>
-										<div class="wizard-day-item">
-											<span class="wizard-sub-text">方案支撑（10分）</span>
-										</div>
-										
-										<div class="wizard-form-input position-relative form-group has-float-label">
-											<div class="badge-selection">
-												<span>方案制作质量和响应及时性：</span><br/>
-												<span>质量高响应快：9-10分;</span><br/>
-												<span>质量良好响应及时：6-8分；</span><br/>
-												<span>质量一般响应及时：4-5分;</span><br/>
-												<span>质量不好响应不及时：0-3分</span><br/>
-											</div>
-										</div>
-										<div class="wizard-form-input position-relative form-group has-float-label">
-											
-											<div class="n-select-option has-float-label">
-												<select th:field="*{projectsupport}" >
-													<option value="-1">---请选择方案支撑评分---</option>
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7">7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-															<option value="10">10</option>
-												</select>
-												<label>方案支撑评分</label>
-											</div>
-										</div>
-										
-										<div class="line"></div>
-										<div class="wizard-day-item">
-											<span class="wizard-sub-text">人员素质（5分）</span>
-										</div>
-										
-										<div class="wizard-form-input position-relative form-group has-float-label">
-											<div class="badge-selection">
-												<span>人员投入素质：</span><br/>
-												<span>人员投入素质高：5分;</span><br/>
-												<span>人员投入素质良好：3-4分;</span><br/>
-												<span>人员投入素质一般：1-2分;</span><br/>
-												<span>人员投入素质差：0分；</span><br/>
-												<span></span>
-											</div>
-										</div>
-										<div class="wizard-form-input position-relative form-group has-float-label">
-											<div class="n-select-option has-float-label">
-												<select th:field="*{personnelquality}">
-													<option value="-1">---请选择人员投入素质评分---</option>
-															<option value="0">0</option>
-															<option value="1">1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-												</select>
-												<label>人员投入素质评分</label>
-											</div>
-										</div>
-										
-										
-										
+    <div id="page_wrapper" class="wrapper clearfix">
+        <!--multisteps-form-->
+        <div class="multisteps-form">
 
-										<div class="wizard-footer">
-											<div class="actions actions2">
-												<ul>
-													<li><button type="submit" id="submit-form" title="提交">提交 <i class="fa fa-arrow-right"></i></button></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-					</form>
-				</div>
-			</div>
-		</div>
+            <!--form panels-->
+            <div class="row">
+                <div class="col-12 col-lg-12 m-auto">
+                    <form class="multisteps-form__form clearfix" action="#" th:action="@{/addCMGrading}" th:object="${grading}" method="post" id="wizard">
+                        <!--single form panel-->
+                        <div class="multisteps-form__panel js-active" data-animation="slideVert">
+                            <div class="inner pb-100">
+                                <div class="wizard-content-item text-center">
+                                    <h2>客户经理评价表</h2>
+                                    <p class="pmentry_open" id="pmentry_open">
+                                    点此查看并选择项目列表<i></i>
+                                    </p>
+                                    <iframe id="pmentry_detail" src="/grading_list" width="100%" height="400px" frameborder="0"></iframe>
+                                    <p class="pmentry_close" id="pmentry_close">
+                                        收起项目信息<i></i>
+                                    </p>
+                                    <ul id="project_msg">
+                                        <li>请先选择评分项目</li>
+                                    </ul>
+                                </div>
 
-	</div>
-	
-	<script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
-	<script src="../static/js/jquery-3.3.1.min.js"></script>
-	<script src="../static/js/popper.min1.js"></script>
-	<script src="../static/js/bootstrap.min.js"></script>
-	<script src="../static/js/switch.js"></script>
-	<script src="../static/js/main4.js"></script>
-	<script src="../static/js/cmgrading.js"></script>
-<!-- 	用于级联下拉框 -->
 
-<script>
-window.onload = function(){
-	console.log("onload!");
-	var pmentry_open = document.getElementById("pmentry_open");//展开操作详情按钮 
-	var pmentry_close = document.getElementById("pmentry_close");//关闭操作详情按钮
-	pmentry_close.style.display = "none";
-	var page = document.getElementById("page_wrapper");
-	var fream = document.getElementById("pmentry_detail");
-	fream.style.display = "none";
-	
-	var unit1 = document.getElementById("unit1");
-	document.getElementById("unit2").disabled='disabled';
-	document.getElementById("unit3").disabled='disabled';
-	document.getElementById("unit4").disabled='disabled';
-	unit1.options.length = 0;
-	var option0 = document.createElement("option");
-	option0.innerHTML = "--请选择单位--";
-	option0.value = 'none';
-	unit1.appendChild(option0);
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == '0'){
-			//创建option元素节点
-			var option = document.createElement("option");
-			//设置option元素节点的内容和value
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			//将新创建的option节点添加到下拉框中
-			unit1.appendChild(option);
-		}
-	}
-	
-	//操作详情表的展开和收起
-	pmentry_open.onclick = function(){
-		pmentry_close.style.display = "block";
-		pmentry_open.style.display = "none";
-		fream.style.display = "block";
-		page.style.height = "2900px";
-	};
-	pmentry_close.onclick = function(){
-		fream.style.display = "none";
-		pmentry_close.style.display = "none";
-		pmentry_open.style.display = "block";
-		page.style.height = "2000px";
-	};
-}
-function changeUnit1(val) {
-	var unit2 = document.getElementById("unit2");
-	unit2.options.length = 0;
-	unit3.options.length = 0;
-	unit4.options.length = 0;
-	var mark = 0;
-	document.getElementById("unit2").disabled='disabled';
-	document.getElementById("unit3").disabled='disabled';
-	document.getElementById("unit4").disabled='disabled';
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit2.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit2").disabled='';
-	}
-}
-function changeUnit2(val) {
-	document.getElementById("unit3").disabled='disabled';
-	document.getElementById("unit4").disabled='disabled';
-	var unit3 = document.getElementById("unit3");
-	unit3.options.length = 0;
-	unit4.options.length = 0;
-	var mark = 0;
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit3.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit3").disabled='';
-	}
-}
-function changeUnit3(val) {
-	document.getElementById("unit4").disabled='disabled';
-	var unit4 = document.getElementById("unit4");
-	unit4.options.length = 0;
-	var mark = 0;
-	for(var i = 0; i < departments.length; i++){
-		if(departments[i]['p_id'] == val){
-			console.log(val);
-			var option = document.createElement("option");
-			option.innerHTML = departments[i]['name'];
-			option.value = departments[i]['id'];
-			unit4.appendChild(option);
-			mark = 1;
-		}
-	}
-	if(mark == 1){
-		document.getElementById("unit4").disabled='';
-	}
-}
-</script>
+                                <div class="wizard-content-form">
+                                    <div class="wizard-form-field">
+                                        <div class="wizard-form-input position-relative form-group has-float-label">
+                                            <input type="text" th:field="*{cmname}" class="form-control" placeholder="请输入填写人本人姓名"> <label>填写人本人姓名</label>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="n-select-option has-float-label">
+                                                    <select name="unit1" id="unit1" onchange="changeUnit1(this.value)">
+                                                        <option value="-1">--请选择单位--</option>
+                                                    </select> <label>单位</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="n-select-option has-float-label">
+                                                    <select name="unit2" id="unit2" onchange="changeUnit2(this.value)">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="n-select-option has-float-label">
+                                                    <select name="unit3" id="unit3" onchange="changeUnit3(this.value)">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="n-select-option has-float-label">
+                                                    <select name="unit4" id="unit4" onchange="changeUnit4(this.value)">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                        <div class="wizard-day-item">
+                                            <span class="wizard-sub-text">综合实力（10分）</span>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="badge-selection">
+                                                    <span>信誉口碑：</span><br /> <span>企业信用口碑高：5分；</span><br /> <span>企业信用口碑良好：3-4分；</span><br /> <span>企业信用口碑一般：1-2分；</span><br /> <span>企业信用口碑差：0分</span><br /> <span></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="badge-selection">
+                                                    <span>客情关系：</span><br /> <span>能及时获取客户有效信息：5分；</span><br /> <span>日常有固定对接人与客户关系良好：3-4分；</span><br /> <span>因本项目有沟通联系，且未有投诉：1-2分；</span><br /> <span>很少有接触或有投诉：0分；</span><br />
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="wizard-form-input position-relative form-group has-float-label">
+                                                    <div class="n-select-option has-float-label">
+                                                        <select th:field="*{credibility}">
+                                                            <option value="-1">---请选择信誉口碑评分---</option>
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select> <label>信誉口碑评分</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="wizard-form-input position-relative form-group has-float-label">
+                                                    <div class="n-select-option has-float-label">
+                                                        <select th:field="*{customerrelat}">
+                                                            <option value="-1">---请选择客情关系评分---</option>
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select> <label>客情关系评分</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="wizard-day-item">
+                                            <span class="wizard-sub-text">方案支撑（10分）</span>
+                                        </div>
+
+                                        <div class="wizard-form-input position-relative form-group has-float-label">
+                                            <div class="badge-selection">
+                                                <span>方案制作质量和响应及时性：</span><br /> <span>质量高响应快：9-10分;</span><br /> <span>质量良好响应及时：6-8分；</span><br /> <span>质量一般响应及时：4-5分;</span><br /> <span>质量不好响应不及时：0-3分</span><br />
+                                            </div>
+                                        </div>
+                                        <div class="wizard-form-input position-relative form-group has-float-label">
+
+                                            <div class="n-select-option has-float-label">
+                                                <select th:field="*{projectsupport}">
+                                                    <option value="-1">---请选择方案支撑评分---</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select> <label>方案支撑评分</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="line"></div>
+                                        <div class="wizard-day-item">
+                                            <span class="wizard-sub-text">人员素质（5分）</span>
+                                        </div>
+
+                                        <div class="wizard-form-input position-relative form-group has-float-label">
+                                            <div class="badge-selection">
+                                                <span>人员投入素质：</span><br /> <span>人员投入素质高：5分;</span><br /> <span>人员投入素质良好：3-4分;</span><br /> <span>人员投入素质一般：1-2分;</span><br /> <span>人员投入素质差：0分；</span><br /> <span></span>
+                                            </div>
+                                        </div>
+                                        <div class="wizard-form-input position-relative form-group has-float-label">
+                                            <div class="n-select-option has-float-label">
+                                                <select th:field="*{personnelquality}">
+                                                    <option value="-1">---请选择人员投入素质评分---</option>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select> <label>人员投入素质评分</label>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="wizard-footer">
+                                            <div class="actions actions2">
+                                                <ul>
+                                                    <li><button type="submit" id="submit-form" title="提交">
+                                                            提交 <i class="fa fa-arrow-right"></i>
+                                                        </button></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/popper.min1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/switch.js"></script>
+    <script src="../static/js/main4.js"></script>
+    <script src="../static/js/cmgrading.js"></script>
+
 
 </body>
 

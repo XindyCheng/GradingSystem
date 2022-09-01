@@ -25,6 +25,8 @@ public class DepartmentService {
 		return departmentDao.deleteAll();
 	}
 	
+
+	
 	public Department getById(int id) {
 		return departmentDao.selectById(id);
 	}

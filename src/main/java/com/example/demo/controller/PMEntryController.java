@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -22,6 +24,7 @@ import com.example.demo.dao.PMEntryDao;
 import com.example.demo.entity.PMEntry;
 import com.example.demo.service.DepartmentService;
 import com.example.demo.service.PMEntryService;
+import com.example.demo.service.RelationshipService;
 
 @Controller
 public class PMEntryController {
@@ -39,6 +42,27 @@ public class PMEntryController {
 		return "pmentry_refer";
 	}
 	
+	@ResponseBody
+	@PostMapping("/detail")
+	public PMEntry detail(Model model,Integer id){
+		System.out.println("执行查询操作：id="+id);
+		model.addAttribute("entryDetail", entryService.getById(id));
+		System.out.println(model.getAttribute("entryDetail"));
+		return entryService.getById(id);
+	}
+	
+//    /**
+//     * 模拟异步请求响应
+//     */
+//    @RequestMapping(value = "/testDetail")
+//    public @ResponseBody PMEntry testDetail(@RequestBody Integer id){
+//        System.out.println("testAjax方法执行了");
+//        PMEntry entry = entryService.getById(id);
+//        System.out.println(entry);
+//        return entry;
+//    }
+
+	
 	@GetMapping("/pmentry")
 	public String toPmentry(Model model) {
 		model.addAttribute("entry", new PMEntry());
@@ -48,8 +72,10 @@ public class PMEntryController {
 	@GetMapping("/grading_list")
 	public String toList(Model model) {
 		model.addAttribute("entry_list", entryService.getAll());
+		model.addAttribute("entryDetail", new PMEntry());
 		return "grading_list";
 	}
+	
 	
 	@PostMapping("/addEntry")
 	public String addEntry(@ModelAttribute PMEntry entry, 
