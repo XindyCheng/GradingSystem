@@ -40,6 +40,12 @@ public class CMGradingController {
         return current_project;
     }
 
+    @PostMapping("/CMEntryDatil")
+    public String CMEntryDatil(Model model, Integer id) {
+
+        return "/cmgrading";
+    }
+
     @PostMapping("/addCMGrading")
     public String addGrading(@ModelAttribute CMGrading grading,
             @RequestParam(name = "unit1", defaultValue = "-1") Integer unit1,
@@ -52,10 +58,11 @@ public class CMGradingController {
         grading.setUnit(departmentString);
         // 添加评分表
         Integer cm_id = gradingService.add(grading);
+        double cm_total = gradingService.getTotalById(cm_id);
         if (cm_id >= 1) {
             // 更新方案经理录入表
             System.out.println("更新项目：pm_id:" + current_project + ", cm_id:" + cm_id);
-            if (relatService.renewCM(current_project, cm_id) == 1) {
+            if (relatService.renewCM(current_project, cm_id, cm_total) == 1) {
                 return "thanks";
             }
         }

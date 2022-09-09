@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>后台管理_页面设置</title>
+<link rel="stylesheet" type="text/css" href="../static/admin/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../static/admin/css/main.css" />
+</head>
+<body>
+    <div class="crumb-wrap">
+        <div class="crumb-list">
+            <i class="icon-font"></i><a href="/admin_sysinfo">首页</a> <span class="crumb-step">&gt;</span> <span>页面设置</span>
+        </div>
+    </div>
+    <div class="result-wrap">
+        <div class="result-content">
+            <form action="#" th:action="@{/updateTitle}" method="post" id="myform" name="myform" th:object="${title}" enctype="multipart/form-data">
+                <table class="insert-tab" width="100%">
+                    <tbody>
+                        <tr>
+                            <th width="120"><i class="require-red">*</i>顶部标题栏：</th>
+                            <td><input class="common-text required" th:field="*{contact}" size="50" type="text"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>左侧标题栏：</th>
+                            <td><input class="common-text required" th:field="*{left}" size="50" type="text"></td>
+                        </tr>
+                        <tr>
+                            <th><i class="require-red">*</i>右侧标题栏：</th>
+                            <td><input class="common-text required" th:field="*{right}" size="50" type="text"></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td><input class="btn btn-primary btn6 mr10" value="修改" type="submit"> <input class="btn btn6" onClick="history.go(-1)" value="返回" type="button"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+
+</body>
+</html>

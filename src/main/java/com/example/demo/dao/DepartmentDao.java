@@ -12,21 +12,17 @@ import com.example.demo.entity.Department;
 @Mapper
 @Repository
 public interface DepartmentDao {
-	@Insert("<script>"
-			+"insert into `departments`"
-			+ "(id,layer,p_id,name) "
-			+ "values(#{department.id},#{department.layer},"
-			+ "#{department.pid},#{department.name})"
-			+ "</script>")
-	public int addDepartment(@Param("department") Department department);
-	
-	@Select("select * from departments where p_id=#{pid}")
-	public Department selectByPid(int pid);
-	
-	@Select("select * from departments where id=#{id}")
-	public Department selectById(int id);
-	
-	@Delete("delete from departments")
-	public int deleteAll();
+    @Insert("<script>" + "insert into `departments`" + "(id,layer,p_id,name) "
+            + "values(#{department.id},#{department.layer}," + "#{department.pid},#{department.name})" + "</script>")
+    public int addDepartment(@Param("department") Department department);
+
+    @Select("select * from departments where p_id=#{pid}")
+    public Department selectByPid(int pid);
+
+    @Select("select * from departments where id=#{id}")
+    public Department selectById(int id);
+
+    @Delete("delete from departments")
+    public int deleteAll();
 
 }

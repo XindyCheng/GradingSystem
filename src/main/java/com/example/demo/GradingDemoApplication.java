@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.example.demo.dao")
 public class GradingDemoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GradingDemoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GradingDemoApplication.class, args);
+    }
 
 }

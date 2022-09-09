@@ -1,0 +1,68 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>后台管理_商机列表</title>
+<link rel="stylesheet" type="text/css" href="../static/admin/css/common.css" />
+<link rel="stylesheet" type="text/css" href="../static/admin/css/main.css" />
+</head>
+<body>
+
+    <div class="crumb-wrap">
+        <div class="crumb-list">
+            <i class="icon-font"></i><a href="/admin_sysinfo">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商机列表</span>
+        </div>
+    </div>
+    <div class="search-wrap">
+        <div class="search-content">
+            <form action="#" method="post">
+                <table class="search-tab">
+                    <tr>
+                        <th width="120">选择日期:</th>
+                        <td><select name="search-sort" id="">
+                                <option value="">全部</option>
+                                <option value="1">？</option>
+                                <option value="2">？？</option>
+                        </select></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div class="result-wrap">
+        <form name="myform" id="myform" method="post">
+            <div class="result-title">
+                <div class="result-list">
+                    <a id="batchDel" href="javascript:void(0)"><i class="icon-font"></i>批量删除</a> 
+                    <a id="updateOrd" href="javascript:void(0)"><i class="icon-font"></i>批量导出</a>
+                </div>
+            </div>
+            <div class="result-content">
+                <table class="result-tab" width="100%">
+                    <tr>
+                        <!--<th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th> -->
+                        <th class="tc"></th>
+                        <th>ID</th>
+                        <th>填写时间</th>
+                        <th>公司名称/联系人</th>
+                        <th>需求</th>
+                        <th>对接行业</th>
+                        <th>其他要求</th>
+                    </tr>
+                    <tr th:each="project:${project_list}">
+                        <td class="tc"><input type="checkbox" name="project_id" th:value="${project.id}" /></td>
+                        <td th:text="${project.id}">ID</td>
+                        <td th:text="${project.time}">填写时间</td>
+                        <td th:text="${project.name}">项目名称</td>
+                        <td th:text="${project.demand}">需求</td>
+                        <td th:text="${project.business}">对接部门</td>
+                        <td th:text="${project.other}">其他</td>
+                    </tr>
+                </table>
+                <div class="list-page">-.-</div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -8,14 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Table(name = "departments")
+@Table(name = "business_title")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Department {
+public class BusinessTitle {
     @Id
     private Integer id;
-    private Integer layer;
-    private Integer pid;
-    private String name;
-
+    private String contact;
+    private String left;
+    private String right;
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商机分享</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/business_opportunity.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper position-relative">
+            <div class="header" id="header">
+                <h1 th:text="${title_info.contact}">联系方式</h1>
+            </div>
+
+            <div class="div_left">
+                <p th:text="${title_info.left}">左侧栏标题</p>
+                <div class="display">
+                <table>
+                    <tr >
+                        <table>
+                            <tr>
+                                <th >【项目合作支撑—— 高速公路施工布控安全预警系统】
+                                </th>
+                                <td rowspan="3" th:text="image">这里是一张图片</td>
+                            </tr>
+                            <tr>
+                                <td th:text="content">具体需求：高速公路安全预警系统 包含：定向声波发生器、手环、肩灯、指挥棒、路测感知设备、平台业务需求单位：电信县级分公司烦请有以下能力的伙伴，填写表单，谢谢各位支持~
+                                </td>
+                            </tr>
+                            <tr>
+                                <td th:text="date">日期</td>
+                            </tr>
+                        </table>
+                    </tr>
+                </table>
+                </div>
+            </div>
+
+            <div class="div_right ">
+                <p th:text="${title_info.right}">右侧栏标题</p>
+                <form name="my_form" th:action="@{/addClientProject}" th:object="${project}" method="post">
+                    <label>公司名称/联系人</label><br/>
+                    <textarea th:field="*{name}" cols="50" rows="2" placeholder="请输入..." /></textarea>
+                    <label>项目需求<small>（项目简要描述）</small></label><br/>
+                    <textarea th:field="*{demand}" cols="50" rows="2" placeholder="请输入..." /></textarea>
+                    <label>对接行业<small>（客户行业，我们安排专人对接）</small></label><br/>
+                    <textarea th:field="*{business}" cols="50" rows="2" placeholder="请输入..." /></textarea>
+                    <label>其他要求<small>（资费，人员等其他，请提出对我们的期待）</small></label><br/>
+                    <textarea th:field="*{other}" cols="50" rows="2" placeholder="请输入..." /></textarea>
+                    <br/>
+                    <div class="submit_div"><input type="submit" value="提交" /></div>
+                </form>
+            </div>
+
+            <div class="footer">
+            
+            </div>
+        </div>
+    </div>
+</body>
+</html>

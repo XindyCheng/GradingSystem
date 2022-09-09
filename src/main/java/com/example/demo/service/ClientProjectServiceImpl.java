@@ -10,33 +10,26 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.PMEntryDao;
-import com.example.demo.entity.PMEntry;
+import com.example.demo.dao.ClientProjectDao;
+import com.example.demo.entity.ClientProject;
 
 @Service
-public class PMEntryServiceImpl implements PMEntryService {
-
+public class ClientProjectServiceImpl implements ClientProjectService {
     @Autowired
     @Resource
-    private PMEntryDao entrydao;
+    private ClientProjectDao projectDao;
 
-    public PMEntry getById(int id) {
-        return entrydao.selectById(id);
-    }
-
-    public List<PMEntry> getAll() {
-        return entrydao.selectAll();
-    }
-
-    public int insertEntry(PMEntry entry) {
+    public int add(ClientProject project) {
         Date date = new Date();
-        entry.setTime(date);
+        project.setTime(date);
         Integer insert_code = 0;
         final Log log = LogFactory.getLog(PMEntryServiceImpl.class);
-        log.info(entry);
-        insert_code = entrydao.insert(entry);
+        log.info(project);
+        insert_code = projectDao.insert(project);
         return insert_code;
-
     }
 
+    public List<ClientProject> getAll() {
+        return projectDao.selectAll();
+    }
 }

@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.CMGrading;
@@ -32,8 +31,5 @@ public interface CMGradingDao {
 
     @Delete("delete from CM_grading where id=#{id}")
     public int deleteById(int id);
-
-    @Update("update")
-    public int update();
 
 }

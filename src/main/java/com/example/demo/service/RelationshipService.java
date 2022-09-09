@@ -11,30 +11,29 @@ import com.example.demo.dao.PMEntryDao;
 
 /**
  * 此Service用于更新三张表之间的关系
-**/
+ **/
 
 @Service
 public class RelationshipService {
-	
-	@Autowired
-	@Resource
-	private PMEntryDao entryDao;
-	
-	@Autowired
-	@Resource
-	private CMGradingDao cmDao;
-	
-	@Autowired
-	@Resource
-	private DMGradingDao dmDao;
-	
-	public int renewCM(Integer pm_id, Integer cm_id) {
-		return entryDao.updateCM(pm_id, cm_id);
-	}
-	
-	public int renewDM(Integer pm_id,Integer dm_id) {
-		return entryDao.updateDM(pm_id, dm_id);
-	}
-	
+
+    @Autowired
+    @Resource
+    private PMEntryDao entryDao;
+
+    @Autowired
+    @Resource
+    private CMGradingDao cmDao;
+
+    @Autowired
+    @Resource
+    private DMGradingDao dmDao;
+
+    public int renewCM(Integer pm_id, Integer cm_id, Double cm_total) {
+        return entryDao.updateCM(pm_id, cm_id, cm_total);
+    }
+
+    public int renewDM(Integer pm_id, Integer dm_id, Double dm_total) {
+        return entryDao.updateDM(pm_id, dm_id, dm_total);
+    }
 
 }

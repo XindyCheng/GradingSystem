@@ -1,161 +1,140 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="utf-8">
-	<title>方案经理录入表</title>
-	<link rel="stylesheet" href="../static/css/pmentry.css">
+<meta charset="utf-8">
+<title>方案经理录入表</title>
+<link rel="stylesheet" href="../static/css/pmentry.css">
 </head>
 <body>
-<div class="wrapper">
-	<form name="my_form" action="#" th:action="@{/addEntry}" th:object="${entry}" method="post">
-		<table class="form_table" border="1" cellspacing="0" align="center">
-		<caption class="title"><h3>方案经理录入表</h3></caption>
-			<tr>
-				<td colspan="5" align="center" height="25" style="color:red">此表单仅管理员与填写人可浏览</td>
-			</tr>
-			<tr>
-				<td colspan="5" align="center" height="25" style="font-weight:550">中止的项目也要填写，中止的项目的合同编号和收入填0</td>
-			</tr>
-			<tr>
-				<th>合同编号</th>
-				<td colspan="3">
-					<input type="text" th:field="*{contractnumber}" required="required" placeholder="请输入合同编号……" />
-				</td>
-			</tr>
-			<tr>
-				<th>项目名称</th>
-				<td colspan="3">
-					<input type="text" th:field="*{name}" required="required" placeholder="请输入项目名称……" />
-				</td>
-			</tr>
-			<tr>
-				<th>供应商名称</th>
-				<td colspan="3">
-					<input type="text" th:field="*{supplier}" required="required" placeholder="请输入供应商名称……" />
-				</td>
-			</tr>
-			<tr>
-				<th>客户名称</th>
-				<td colspan="3">
-					<input type="text" th:field="*{client}" required="required" placeholder="请输入客户名称……" />
-				</td>
-			</tr>
-			<tr>
-				<th>项目起始年份</th>
-				<td >
-					<select th:field="*{start}" style="height:50px;width:100px;">
-						<option value="2017">2017</option>
-						<option value="2018">2018</option>
-						<option value="2019" selected>2019</option>
-						<option value="2020">2020</option>
-						<option value="2021">2021</option>
-						<option value="2022">2022</option>
-						<option value="2023">2023</option>
-						<option value="2024">2024</option>
-					</select>
-					<label>年</label>
-				</td>
-				<th >项目金额(单位：万元)</th>
-				<td>
-					<input type="text" th:field="*{total}" required="required" style="width:150px;" placeholder="请输入总金额……" />
-					<label> 万元</label>
-				</td>
-			</tr>
-			<tr>
-				<th>项目状态</th>
-				<td colspan="3">
-					<input type="radio" th:field="*{state}" id="underway" name="state" value="0" />在途 
-					<input type="radio" th:field="*{state}" id="complete" name="state" value="1" />结束
-					<input type="radio" th:field="*{state}" id="suspend" name="state" value="2" />中止
-				</td>
-			</tr>
-			<tr>
-				<th>涉及能力</th>
-				<td colspan="3">
-					<input type="checkbox" id="ab1" name="ab" value="5G" />5G
-					<input type="checkbox" id="ab2" name="ab" value="云" />云
-					<input type="checkbox" id="ab3" name="ab" value="网" />网
-					<input type="checkbox" id="ab4" name="ab" value="物" />物
-					<input type="checkbox" id="ab5" name="ab" value="安" />安
-					<input type="checkbox" id="ab6" name="ab" value="硬件" />硬件
-					<input type="checkbox" id="ab7" name="ab" value="垫资" />垫资
-					<input type="checkbox" id="ab8" name="ab" value="工程" />工程
-					<input type="checkbox" id="ab9" name="ab" value="其他" />其他
-				</td>
-			</tr>
-			<tr>
-				<th>行业BG</th>
-				<td>
-					<select th:field="*{bg}" style="height:50px;width:100px">
-						<option value="0">数字政府</option>
-						<option value="1">大企业</option>
-						<option value="2">智慧城市</option>
-						<option value="3">金融</option>
-						<option value="4">互联网</option>
-						<option value="5">教育</option>
-						<option value="6">卫健</option>
-					</select>
-				</td>
-				<th>方案经理评分</th>
-				<td colspan="4">
-					<select th:field="*{score}" style="height:50px;width:100px">
-						<option value="A">A</option>
-						<option value="B">B</option>
-						<option value="C">C</option>
-						<option value="D">D</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>方案经理名称</th>
-				<td colspan="3">
-					<input type="text" th:field="*{pmname}" style="height:50px;width:600px;" id="pmname" name="pmname" required="required" placeholder="请输入填写人名称……" />
-				</td>
-			</tr>
-			<tr>
-				<th>填写人所在单位</th>
-				<td colspan="4">
-					<div class="my_select-option">
-						<select th:value="#{unit1}" style="width:200px;" name="unit1" id="unit1" onchange="changeUnit1(this.value)">
-							<option value="default">--请选择单位--</option>
-						</select>
-						<select th:value="#{unit2}" name="unit2" id="unit2" onchange="changeUnit2(this.value)"></select>
-						<select th:value="#{unit3}"  name="unit3" id="unit3" onchange="changeUnit3(this.value)"></select>
-						<select th:value="#{unit4}" name="unit4" id="unit4" onchange="changeUnit4(this.value)"></select>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<th>客户经理名称</th>
-				<td>
-					<input type="text" th:field="*{cmname}" style="height:50px;width:180px" required="required" placeholder="请输入客户经理名称……" />
-				</td>
-				<th>交付经理名称</th>
-				<td>
-					<input type="text" th:field="*{dmname}" style="width:200px;" required="required" placeholder="请输入交付经理名称……" />
-				</td>
-			</tr>
-			<tr>
-				<th>备注</th>
-				<td colspan="3">
-					<textarea th:field="*{comment}" cols="80" rows="3" placeholder="请输入备注……"/></textarea>
-				</td>
-			</tr>
-			<tr>
-				<th colspan="4">
-					<input type="submit" value="提交" />
-					<input type="reset" value="重置" />
-				</th>
-			</tr>
-		</table>
-	</form>
-</div>
-	<script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
-	<script src="../static/js/jquery-3.3.1.min.js"></script>
-	<script src="../static/js/popper.min1.js"></script>
-	<script src="../static/js/bootstrap.min.js"></script>
-	<script src="../static/js/switch.js"></script>
-	<script src="../static/js/main4.js"></script>
-	<script src="../static/js/pmentry.js"></script>
+    <div class="wrapper">
+        <form name="my_form" action="#" th:action="@{/addEntry}" th:object="${entry}" method="post">
+            <table class="form_table" border="1" cellspacing="0" align="center">
+                <caption class="title">
+                    <h3>方案经理录入表</h3>
+                </caption>
+                <tr>
+                    <td colspan="5" align="center" height="25" style="color: red">此表单仅管理员与填写人可浏览</td>
+                </tr>
+                <tr>
+                    <td colspan="5" align="center" height="25" style="font-weight: 550">中止的项目也要填写，中止的项目的合同编号和收入填0</td>
+                </tr>
+                <tr>
+                    <th>合同编号</th>
+                    <td colspan="3"><input type="text" th:field="*{contractnumber}" required="required" placeholder="请输入合同编号……" /></td>
+                </tr>
+                <tr>
+                    <th>项目名称</th>
+                    <td colspan="3"><input type="text" th:field="*{name}" required="required" placeholder="请输入项目名称……" /></td>
+                </tr>
+                <tr>
+                    <th>供应商名称</th>
+                    <td colspan="3"><input type="text" th:field="*{supplier}" required="required" placeholder="请输入供应商名称……" /></td>
+                </tr>
+                <tr>
+                    <th>客户名称</th>
+                    <td colspan="3"><input type="text" th:field="*{client}" required="required" placeholder="请输入客户名称……" /></td>
+                </tr>
+                <tr>
+                    <th>项目起始年份</th>
+                    <td><select th:field="*{start}" style="height: 50px; width: 100px;">
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                            <option value="2019" selected>2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                    </select> <label>年</label></td>
+                    <th>项目金额(单位：万元)</th>
+                    <td><input type="text" th:field="*{total}" required="required" style="width: 150px;" placeholder="请输入总金额……" /> <label> 万元</label></td>
+                </tr>
+                <tr>
+                    <th>项目状态</th>
+                    <td colspan="3">
+                        <input type="radio" th:field="*{state}" id="underway" name="state" value="0" />在途
+                        <input type="radio" th:field="*{state}" id="complete" name="state" value="1" />结束 
+                        <input type="radio" th:field="*{state}" id="suspend" name="state" value="2" />中止
+                    </td>
+                </tr>
+                <tr>
+                    <th>涉及能力</th>
+                    <td colspan="3">
+                        <span ><input th:field="*{ability}" type="text" style="display: none" /></span>
+                        <div id="div_ability" onclick="getAbilityStr()">
+                        <input type="checkbox" id="ab1" name="ab" value="5G" />5G 
+                        <input type="checkbox" id="ab2" name="ab" value="云计算" />云计算 
+                        <input type="checkbox" id="ab3" name="ab" value="网" />网 
+                        <input type="checkbox" id="ab4" name="ab" value="物" />物 
+                        <input type="checkbox" id="ab5" name="ab" value="安" />安 
+                        <input type="checkbox" id="ab6" name="ab" value="硬件" />硬件 
+                        <input type="checkbox" id="ab7" name="ab" value="垫资" />垫资
+                        <input type="checkbox" id="ab8" name="ab" value="工程" />工程 
+                        <input type="checkbox" id="ab9" name="ab" value="其他" />其他
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>行业BG</th>
+                    <td><select th:field="*{bg}" style="height: 50px; width: 100px">
+                            <option value="0">数字政府</option>
+                            <option value="1">大企业</option>
+                            <option value="2">智慧城市</option>
+                            <option value="3">金融</option>
+                            <option value="4">互联网</option>
+                            <option value="5">教育</option>
+                            <option value="6">卫健</option>
+                    </select></td>
+                    <th>方案经理评分</th>
+                    <td colspan="4"><select th:field="*{score}" style="height: 50px; width: 100px">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <th>方案经理名称</th>
+                    <td colspan="3"><input type="text" th:field="*{pmname}" style="height: 50px; width: 600px;" id="pmname" name="pmname" required="required" placeholder="请输入填写人名称……" /></td>
+                </tr>
+                <tr>
+                    <th>填写人所在单位</th>
+                    <td colspan="4">
+                        <div class="my_select-option">
+                            <select th:value="#{unit1}" style="width: 200px;" name="unit1" id="unit1" onchange="changeUnit1(this.value)">
+                                <option value="default">--请选择单位--</option>
+                            </select> 
+                            <select th:value="#{unit2}" name="unit2" id="unit2" onchange="changeUnit2(this.value)"></select> 
+                            <select th:value="#{unit3}" name="unit3" id="unit3" onchange="changeUnit3(this.value)"></select>
+                            <select th:value="#{unit4}" name="unit4" id="unit4" onchange="changeUnit4(this.value)"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>客户经理名称</th>
+                    <td><input type="text" th:field="*{cmname}" style="height: 50px; width: 180px" required="required" placeholder="请输入客户经理名称……" /></td>
+                    <th>交付经理名称</th>
+                    <td><input type="text" th:field="*{dmname}" style="width: 200px;" required="required" placeholder="请输入交付经理名称……" /></td>
+                </tr>
+                <tr>
+                    <th>备注</th>
+                    <td colspan="3"><textarea th:field="*{comment}" cols="80" rows="3" placeholder="请输入备注……" /></textarea></td>
+                </tr>
+                <tr>
+                    <th colspan="4"><input type="submit" value="提交" /> <input type="reset" value="重置" /></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript" src="../static/results.json" charset="utf-8"></script>
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/popper.min1.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/switch.js"></script>
+    <script src="../static/js/main4.js"></script>
+    <script src="../static/js/pmentry.js"></script>
 </body>
 </html>

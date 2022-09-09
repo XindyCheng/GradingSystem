@@ -34,4 +34,8 @@ public class CMGradingServiceImpl implements CMGradingService {
         return increment_code;
     }
 
+    public double getTotalById(int id) {
+        return gradingdao.selectById(id).getTotal();
+    }
+
 }
